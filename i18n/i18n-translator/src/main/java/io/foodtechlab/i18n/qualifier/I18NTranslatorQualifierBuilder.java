@@ -1,10 +1,11 @@
-package io.foodtechlab.qualifier;
+package io.foodtechlab.i18n.qualifier;
 
-import io.foodtechlab.I18NTranslator;
-import io.foodtechlab.exception.DefaultTranslatorNotSetException;
-import io.foodtechlab.exception.NotUniqueTranslatorException;
-import io.foodtechlab.exception.TranslatorHasInvalidLocaleException;
-import io.foodtechlab.exception.TranslatorListAreEmptyException;
+
+import io.foodtechlab.i18n.I18NTranslator;
+import io.foodtechlab.i18n.exception.DefaultTranslatorNotSetException;
+import io.foodtechlab.i18n.exception.NotUniqueTranslatorException;
+import io.foodtechlab.i18n.exception.TranslatorHasInvalidLocaleException;
+import io.foodtechlab.i18n.exception.TranslatorListAreEmptyException;
 
 import java.util.ArrayList;
 import java.util.List;

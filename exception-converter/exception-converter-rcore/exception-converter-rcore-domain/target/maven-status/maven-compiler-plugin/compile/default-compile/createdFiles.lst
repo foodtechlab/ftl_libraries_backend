@@ -1,0 +1,7 @@
+io/foodtechlab/exception/converter/rcore/domain/exceptions/HandledRCoreDomainException$RCoreError.class
+io/foodtechlab/exception/converter/rcore/domain/exceptions/HandledRCoreDomainException$PresentationData.class
+io/foodtechlab/exception/converter/rcore/domain/exceptions/HandledRCoreDomainException$PresentationData$PresentationDataBuilder.class
+io/foodtechlab/exception/converter/rcore/domain/exceptions/HandledRCoreDomainException.class
+io/foodtechlab/exception/converter/rcore/domain/rcoreExceptions/UnknownCheckedDomainRCoreException.class
+io/foodtechlab/exception/converter/rcore/domain/exceptions/HandledRCoreDomainException$RCoreError$RCoreErrorBuilder.class
+io/foodtechlab/exception/converter/rcore/domain/Domain.class

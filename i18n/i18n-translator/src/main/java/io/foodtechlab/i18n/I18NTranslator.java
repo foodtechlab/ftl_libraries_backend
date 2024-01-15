@@ -1,4 +1,4 @@
-package io.foodtechlab;
+package io.foodtechlab.i18n;
 
 import java.util.Locale;
 import java.util.Map;

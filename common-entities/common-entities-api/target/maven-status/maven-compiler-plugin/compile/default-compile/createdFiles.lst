@@ -1,0 +1,16 @@
+io/foodtechlab/common/api/fullName/FullNameRequest$FullNameRequestBuilder.class
+io/foodtechlab/common/api/fullName/FullNameRequest$FullNameRequestBuilderImpl.class
+io/foodtechlab/common/api/baseDelete/BaseDeleteAdminResponse$BaseDeleteAdminResponseBuilder.class
+io/foodtechlab/common/api/location/LocationRequest.class
+io/foodtechlab/common/api/socialAccount/SocialAccountResponse.class
+io/foodtechlab/common/api/location/LocationResponse.class
+io/foodtechlab/common/api/socialAccount/SocialAccountRequest.class
+io/foodtechlab/common/api/fullName/FullNameResponse.class
+io/foodtechlab/common/api/fullName/FullNameResponse$FullNameResponseBuilder.class
+io/foodtechlab/common/api/fullName/FullNameRequest.class
+io/foodtechlab/common/api/externalLink/ExternalLinkApiModel$ExternalLinkApiModelBuilder.class
+io/foodtechlab/common/api/externalLink/ExternalLinkApiModel.class
+io/foodtechlab/common/api/baseDelete/BaseDeleteAdminResponse.class
+io/foodtechlab/common/api/baseDelete/BaseDeleteAdminResponse$BaseDeleteAdminResponseBuilderImpl.class
+io/foodtechlab/common/api/externalLink/ExternalLinkApiModel$ExternalLinkApiModelBuilderImpl.class
+io/foodtechlab/common/api/fullName/FullNameResponse$FullNameResponseBuilderImpl.class

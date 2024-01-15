@@ -1,13 +1,12 @@
-package io.foodtechlab.qualifier;
+package io.foodtechlab.i18n.qualifier;
 
+import io.foodtechlab.i18n.I18NTranslator;
+import io.foodtechlab.i18n.exception.DefaultTranslatorNotSetException;
+import io.foodtechlab.i18n.exception.NotUniqueTranslatorException;
+import io.foodtechlab.i18n.exception.TranslatorHasInvalidLocaleException;
+import io.foodtechlab.i18n.exception.TranslatorListAreEmptyException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import io.foodtechlab.I18NTranslator;
-import io.foodtechlab.core.ExtendedLocale;
-import io.foodtechlab.exception.DefaultTranslatorNotSetException;
-import io.foodtechlab.exception.NotUniqueTranslatorException;
-import io.foodtechlab.exception.TranslatorHasInvalidLocaleException;
-import io.foodtechlab.exception.TranslatorListAreEmptyException;
 
 import java.util.Locale;
 import java.util.Map;
@@ -33,8 +32,8 @@ public class I18NTranslatorQualifierBuilderTest {
         assertEquals("Sir Elton Hercules John", i18NTranslatorQualifier.get(locale).translate("ELTON_JOHN"));
 
         //Добавился стандартный определитель
-        assertEquals(locale, i18NTranslatorQualifier.get(ExtendedLocale.RUSSIA).getLocale());
-        assertEquals("Sir Elton Hercules John", i18NTranslatorQualifier.get(ExtendedLocale.RUSSIA).translate("ELTON_JOHN"));
+        assertEquals(locale, i18NTranslatorQualifier.get(io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA).getLocale());
+        assertEquals("Sir Elton Hercules John", i18NTranslatorQualifier.get(io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA).translate("ELTON_JOHN"));
     }
 
     @Test

@@ -1,11 +1,13 @@
 package io.foodtechlab.tests.wiremock.utils;
 
-import org.wiremock.wiremock.matching.StringValuePattern;
+
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.wiremock.wiremock.client.WireMock.matching;
+import static com.github.tomakehurst.wiremock.client.WireMock.matching;
+
 
 public class WireMockPropertiesUtils {
 

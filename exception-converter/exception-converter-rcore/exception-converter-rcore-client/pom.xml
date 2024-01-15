@@ -35,5 +35,9 @@
             <groupId>io.foodtechlab</groupId>
             <artifactId>exception-converter-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>api-exception-handler-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

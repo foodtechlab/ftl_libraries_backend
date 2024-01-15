@@ -1,15 +1,14 @@
-package io.foodtechlab.translator;
+package io.foodtechlab.i18n.translator;
 
+import io.foodtechlab.i18n.I18NTranslator;
+import io.foodtechlab.i18n.exception.IllegalInjectionTypeException;
+import io.foodtechlab.i18n.qualifier.I18NTranslatorQualifier;
+import io.foodtechlab.i18n.qualifier.I18NTranslatorQualifierBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.context.MessageSource;
-import io.foodtechlab.I18NTranslator;
-import io.foodtechlab.core.ExtendedLocale;
-import io.foodtechlab.exception.IllegalInjectionTypeException;
-import io.foodtechlab.qualifier.I18NTranslatorQualifier;
-import io.foodtechlab.qualifier.I18NTranslatorQualifierBuilder;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,95 +23,95 @@ public class RuLocalizationI18NTranslatorTest {
     @BeforeEach
     public void init() {
         //Просто текст
-        Mockito.when(localizationSource.getMessage("EMPTY.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("EMPTY.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Корзина пуста");
 
         //Текст с падежами
-        Mockito.when(localizationSource.getMessage("PRICE.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PRICE.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("До бесплатной доставки осталось {price} {price:case}");
-        Mockito.when(localizationSource.getMessage("PRICE.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PRICE.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("PRICE.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PRICE.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("price");
-        Mockito.when(localizationSource.getMessage("PRICE.price", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PRICE.price", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("рубль,рубля,рублей");
 
         //Текст с инъекциями, но без падежей и с hasNumberCase= false
-        Mockito.when(localizationSource.getMessage("COUNT.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("COUNT.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Кол-во товаров: {count}");
-        Mockito.when(localizationSource.getMessage("COUNT.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("COUNT.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("false");
 
         //Текст с инъекциями, но без падежей и без hasNumberCase
-        Mockito.when(localizationSource.getMessage("ORDER_NUMBER.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_NUMBER.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Номер заказа: {orderNumber}");
 
         //Несколько инъекций и повторяющиеся инъекции
-        Mockito.when(localizationSource.getMessage("ORDER.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Кол-во блюд: {dishCount}; Из них напитков: {drinkCount}; Платных блюд: {dishCount}");
 
         //Инъекция строки
-        Mockito.when(localizationSource.getMessage("NAME.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("NAME.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Привет, моё имя {name}");
 
         //Несколько инъекций со склонениями
-        Mockito.when(localizationSource.getMessage("ORDER_PRICE.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_PRICE.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Номер заказа {orderNumber}. Стоимость заказа {price} {price:case}. Гость должен заплатить {cost} {cost:case}");
-        Mockito.when(localizationSource.getMessage("ORDER_PRICE.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_PRICE.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("ORDER_PRICE.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_PRICE.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("price,cost");
-        Mockito.when(localizationSource.getMessage("ORDER_PRICE.price", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_PRICE.price", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("рубль,рубля,рублей");
-        Mockito.when(localizationSource.getMessage("ORDER_PRICE.cost", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("ORDER_PRICE.cost", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("рубль,рубля,рублей");
 
         //Забыл указать в тексте ключ с инъекцией склонения
-        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Стоимость заказа {price}");
-        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("price");
-        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.price", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SHORT_ORDER_PRICE.price", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("рубль,рубля,рублей");
 
         //Лишние ключи для склонений
-        Mockito.when(localizationSource.getMessage("SET_COUNT.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SET_COUNT.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Кол-во ролов в сете: {count} {count:case}");
-        Mockito.when(localizationSource.getMessage("SET_COUNT.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SET_COUNT.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("SET_COUNT.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SET_COUNT.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("count,amount");
-        Mockito.when(localizationSource.getMessage("SET_COUNT.count", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("SET_COUNT.count", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("штука,штуки,штук");
 
         //Разные типы данных
-        Mockito.when(localizationSource.getMessage("PROFILE.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PROFILE.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Имя: {name}; Возраст: {age} {age:case}");
-        Mockito.when(localizationSource.getMessage("PROFILE.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PROFILE.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("PROFILE.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PROFILE.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("age");
-        Mockito.when(localizationSource.getMessage("PROFILE.age", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("PROFILE.age", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("год,года,лет");
 
         //В конфигурации не указаны варианты склонения
-        Mockito.when(localizationSource.getMessage("BIRTH.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BIRTH.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("Нашей компании уже {year} {year:case}");
-        Mockito.when(localizationSource.getMessage("BIRTH.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BIRTH.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("BIRTH.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BIRTH.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("year");
 
         //В конфигурации не указаны не все варианты склонения
-        Mockito.when(localizationSource.getMessage("BONUS.text", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BONUS.text", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("У вас на балансе {bonus} {bonus:case}");
-        Mockito.when(localizationSource.getMessage("BONUS.hasNumberCase", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BONUS.hasNumberCase", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("true");
-        Mockito.when(localizationSource.getMessage("BONUS.caseFields", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BONUS.caseFields", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("bonus");
-        Mockito.when(localizationSource.getMessage("BONUS.bonus", null, ExtendedLocale.RUSSIA))
+        Mockito.when(localizationSource.getMessage("BONUS.bonus", null, io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA))
                 .thenReturn("икринка,икринки");
 
 
@@ -258,11 +257,11 @@ public class RuLocalizationI18NTranslatorTest {
     }
 
     private <V> String getTranslate(String code, Map<String, V> injections) {
-        return i18NTranslatorQualifier.get(ExtendedLocale.RUSSIA).translate(code, injections);
+        return i18NTranslatorQualifier.get(io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA).translate(code, injections);
     }
 
 
     private String getTranslate(String code) {
-        return i18NTranslatorQualifier.get(ExtendedLocale.RUSSIA).translate(code);
+        return i18NTranslatorQualifier.get(io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA).translate(code);
     }
 }

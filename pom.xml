@@ -90,17 +90,19 @@
         <!--Sleuth-->
 
         <!--Lombok-->
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <!--Lombok-->
 
         <!--Logging-->
         <slf4j.version>1.7.36</slf4j.version>
+        <slf4j-new.version>2.22.1</slf4j-new.version>
+
         <!--Logging-->
 
         <!--Testing-->
         <junit.version>5.8.2</junit.version>
         <mockito.version>4.6.1</mockito.version>
-        <wiremock.version>3.0.1</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <!--Testing-->
 
         <!--Typetools-->
@@ -110,6 +112,11 @@
         <!--Swagger-->
         <swagger.version>1.6.6</swagger.version>
         <!--Swagger-->
+
+        <!--Mapstruct-->
+        <mapstruct.version>1.5.2.Final</mapstruct.version>
+        <mapstruct-lombok.version>0.2.0</mapstruct-lombok.version>
+        <!--Mapstruct-->
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -528,22 +535,24 @@
                 <artifactId>rcore-event-driven</artifactId>
                 <version>${rcore.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.github.rostislav-maslov.rcore</groupId>
                 <artifactId>rcore-domain-commons</artifactId>
                 <version>${rcore.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.github.rostislav-maslov.rcore</groupId>
                 <artifactId>rcore-domain-security</artifactId>
                 <version>${rcore.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.github.rostislav-maslov.rcore</groupId>
                 <artifactId>rcore-database-mongo-commons</artifactId>
+                <version>${rcore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.rostislav-maslov.rcore</groupId>
+                <artifactId>rcore-commons</artifactId>
                 <version>${rcore.version}</version>
             </dependency>
             <!--Rcore-->
@@ -554,6 +563,12 @@
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${slf4j-new.version}</version>
+            </dependency>
+
             <!--Logging-->
 
             <!--Инструменты для тестирования-->
@@ -587,6 +602,24 @@
                 <version>${swagger.version}</version>
             </dependency>
             <!--Swagger-->
+
+            <!--Mapstruct-->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${mapstruct-lombok.version}</version>
+            </dependency>
+            <!--Mapstruct-->
 
         </dependencies>
 

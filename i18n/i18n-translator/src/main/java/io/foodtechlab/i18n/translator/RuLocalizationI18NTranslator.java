@@ -1,9 +1,8 @@
-package io.foodtechlab.translator;
+package io.foodtechlab.i18n.translator;
 
+import io.foodtechlab.i18n.exception.IllegalInjectionTypeException;
 import lombok.Getter;
 import org.springframework.context.MessageSource;
-import io.foodtechlab.core.ExtendedLocale;
-import io.foodtechlab.exception.IllegalInjectionTypeException;
 
 import java.util.*;
 
@@ -41,7 +40,7 @@ import static java.lang.Math.abs;
 public class RuLocalizationI18NTranslator extends LocalizationI18NTranslator {
 
     @Getter
-    private final Locale locale = ExtendedLocale.RUSSIA;
+    private final Locale locale = io.foodtechlab.i18n.core.ExtendedLocale.RUSSIA;
 
     public RuLocalizationI18NTranslator(MessageSource localizationSource) {
         super(localizationSource);

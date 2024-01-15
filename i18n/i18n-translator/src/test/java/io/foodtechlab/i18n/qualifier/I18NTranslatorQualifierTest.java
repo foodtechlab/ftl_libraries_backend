@@ -1,9 +1,9 @@
-package io.foodtechlab.qualifier;
+package io.foodtechlab.i18n.qualifier;
 
+import io.foodtechlab.i18n.I18NTranslator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import io.foodtechlab.I18NTranslator;
 
 import java.util.Locale;
 import java.util.Map;

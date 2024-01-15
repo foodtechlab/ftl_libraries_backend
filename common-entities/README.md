@@ -55,7 +55,8 @@
 ```
 
 > Подробнее про подключение
-> библиотек: [тут](https://www.notion.so/foodtech/Use-Nexus-5e55aef2f84a4a32a3c49dd1ecf8850c#e6b1fde9b5604c5884e203868923caf4)
+>
+библиотек: [тут](https://www.notion.so/foodtech/Use-Nexus-5e55aef2f84a4a32a3c49dd1ecf8850c#e6b1fde9b5604c5884e203868923caf4)
 
 ## Как пользоваться ##
 
@@ -191,7 +192,8 @@ public TopicCategoryRestoredEvent createEvent(TopicCategoryEntity entity){
 
 #### QuarterRange
 
-Класс утилита возвращает `LocalDateTime` начала квартала (метод `start`) и `LocalDateTime` окончания квартала (метод `end`)  
+Класс утилита возвращает `LocalDateTime` начала квартала (метод `start`) и `LocalDateTime` окончания квартала (
+метод `end`)
 
 ### Api ###
 

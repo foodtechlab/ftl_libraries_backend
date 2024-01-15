@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>io.foodtechlab</groupId>
-            <artifactId>i18n</artifactId>
+            <artifactId>i18n-helper</artifactId>
         </dependency>
 
         <dependency>

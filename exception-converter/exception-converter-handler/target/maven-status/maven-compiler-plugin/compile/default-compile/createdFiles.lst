@@ -1,0 +1,3 @@
+io/foodtechlab/exception/converter/handler/CheckedExceptionHandler.class
+io/foodtechlab/exception/converter/handler/init/CheckedExceptionConfiguration.class
+io/foodtechlab/exception/converter/handler/init/EnableCheckedExceptionHandler.class

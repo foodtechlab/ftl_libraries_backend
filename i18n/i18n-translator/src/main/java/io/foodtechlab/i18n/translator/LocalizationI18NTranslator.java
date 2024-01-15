@@ -1,7 +1,7 @@
-package io.foodtechlab.translator;
+package io.foodtechlab.i18n.translator;
 
+import io.foodtechlab.i18n.I18NTranslator;
 import org.springframework.context.MessageSource;
-import io.foodtechlab.I18NTranslator;
 
 /**
  * Базовый класс переводчика.<br>

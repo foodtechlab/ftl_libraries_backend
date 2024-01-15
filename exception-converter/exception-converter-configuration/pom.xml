@@ -17,11 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>io.foodtechlab</groupId>
-            <artifactId>exception-converter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.foodtechlab</groupId>
             <artifactId>exception-converter-domain</artifactId>
         </dependency>
 
@@ -32,12 +27,17 @@
 
         <dependency>
             <groupId>io.foodtechlab</groupId>
-            <artifactId>exception-converter-rcore</artifactId>
+            <artifactId>exception-converter-rcore-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>io.foodtechlab</groupId>
             <artifactId>exception-converter-resource</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>exception-converter-rcore-handler</artifactId>
         </dependency>
     </dependencies>
 </project>

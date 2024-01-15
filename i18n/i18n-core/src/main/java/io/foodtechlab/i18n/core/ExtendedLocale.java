@@ -1,4 +1,4 @@
-package io.foodtechlab.core;
+ package io.foodtechlab.i18n.core;
 
 import java.util.Locale;
 

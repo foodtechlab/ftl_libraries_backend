@@ -1,13 +1,13 @@
-package io.foodtechlab.translator;
+package io.foodtechlab.i18n.translator;
 
+import io.foodtechlab.i18n.I18NTranslator;
+import io.foodtechlab.i18n.qualifier.I18NTranslatorQualifier;
+import io.foodtechlab.i18n.qualifier.I18NTranslatorQualifierBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.context.MessageSource;
-import io.foodtechlab.I18NTranslator;
-import io.foodtechlab.qualifier.I18NTranslatorQualifier;
-import io.foodtechlab.qualifier.I18NTranslatorQualifierBuilder;
 
 import java.util.Collections;
 import java.util.HashMap;

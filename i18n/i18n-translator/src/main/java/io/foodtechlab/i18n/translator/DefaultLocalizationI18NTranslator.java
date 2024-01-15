@@ -1,4 +1,4 @@
-package io.foodtechlab.translator;
+package io.foodtechlab.i18n.translator;
 
 import org.springframework.context.MessageSource;
 

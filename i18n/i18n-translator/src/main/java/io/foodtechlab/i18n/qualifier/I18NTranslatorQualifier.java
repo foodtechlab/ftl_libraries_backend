@@ -1,6 +1,7 @@
-package io.foodtechlab.qualifier;
+package io.foodtechlab.i18n.qualifier;
 
-import io.foodtechlab.I18NTranslator;
+
+import io.foodtechlab.i18n.I18NTranslator;
 
 import java.util.List;
 import java.util.Locale;

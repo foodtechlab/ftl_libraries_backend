@@ -24,6 +24,13 @@
 
     <packaging>pom</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
     <distributionManagement>
         <repository>
             <id>ftl-tests-helpers-lib-releases</id>

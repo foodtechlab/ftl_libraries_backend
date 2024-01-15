@@ -1,4 +1,4 @@
-package io.foodtechlab;
+package io.foodtechlab.i18n;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;

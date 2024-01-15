@@ -1,4 +1,4 @@
-package io.foodtechlab.exception;
+package io.foodtechlab.i18n.exception;
 
 public class TranslatorHasInvalidLocaleException extends IllegalArgumentException {
     public TranslatorHasInvalidLocaleException() {

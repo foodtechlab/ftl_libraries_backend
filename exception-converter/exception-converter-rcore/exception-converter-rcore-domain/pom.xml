@@ -12,4 +12,14 @@
 
     <artifactId>exception-converter-rcore-domain</artifactId>
     <version>${revision}</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.rostislav-maslov.rcore</groupId>
+            <artifactId>rcore-domain-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>exception-converter-domain</artifactId>
+        </dependency>
+    </dependencies>
 </project>
