@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.foodtechlab</groupId>
+        <artifactId>backend-libraries</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>api-exception-handler</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api-exception-handler-core</module>
+        <module>api-exception-handler-api</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>api-exception-handler-releases</id>
+            <name>api-exception-handler-releases</name>
+            <url>https://nexus.foodtech-lab.ru/repository/api-exception-handler-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>api-exception-handler-snapshots</id>
+            <name>api-exception-handler-snapshots</name>
+            <url>https://nexus.foodtech-lab.ru/repository/api-exception-handler-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

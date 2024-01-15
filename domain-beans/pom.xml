@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.foodtechlab</groupId>
+        <artifactId>backend-libraries</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>domain-beans</artifactId>
+    <version>${revision}</version>
+
+    <distributionManagement>
+        <repository>
+            <id>domain-beans-releases</id>
+            <name>domain-beans-releases</name>
+            <url>https://nexus.foodtech-lab.ru/repository/domain-beans-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>domain-beans-snapshots</id>
+            <name>domain-beans-snapshots</name>
+            <url>https://nexus.foodtech-lab.ru/repository/domain-beans-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.rostislav-maslov.rcore</groupId>
+            <artifactId>rcore-domain-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.rostislav-maslov.rcore</groupId>
+            <artifactId>rcore-event-driven</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.jodah</groupId>
+            <artifactId>typetools</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

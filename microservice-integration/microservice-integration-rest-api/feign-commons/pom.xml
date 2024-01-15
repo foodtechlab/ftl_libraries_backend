@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>microservice-integration-rest-api</artifactId>
+        <groupId>io.foodtechlab</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>feign-commons</artifactId>
+    <version>${revision}</version>
+
+    <dependencies>
+        <!--Spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <!--Spring-->
+
+        <!--Feign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+        </dependency>
+        <!--Feign-->
+
+
+        <!--Обработчик ошибок-->
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>api-exception-handler-core</artifactId>
+        </dependency>
+        <!--Обработчик ошибок-->
+
+
+        <!--Rcore-->
+        <dependency>
+            <groupId>com.github.rostislav-maslov.rcore</groupId>
+            <artifactId>rcore-rest-api-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.rostislav-maslov.rcore</groupId>
+            <artifactId>rcore-rest-api-spring-commons</artifactId>
+        </dependency>
+        <!--Rcore-->
+    </dependencies>
+</project>

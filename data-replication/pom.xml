@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.foodtechlab</groupId>
+        <artifactId>backend-libraries</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>data-replication</artifactId>
+    <version>${revision}</version>
+
+    <distributionManagement>
+        <repository>
+            <id>ftl-data-replication-helper-releases</id>
+            <name>ftl-data-replication-helper-releases</name>
+            <url>https://nexus.foodtech-lab.ru/repository/ftl-data-replication-helper-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ftl-data-replication-helper-snapshots</id>
+            <name>ftl-data-replication-helper-snapshots</name>
+            <url>https://nexus.foodtech-lab.ru/repository/ftl-data-replication-helper-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

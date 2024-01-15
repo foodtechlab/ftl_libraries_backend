@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>i18n</artifactId>
+        <groupId>io.foodtechlab</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>i18n-translator</artifactId>
+    <version>${revision}</version>
+
+    <dependencies>
+        <!--Инструменты для тестирования-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--Инструменты для тестирования-->
+
+        <!--Зависимость от базовых классов-->
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>i18n-core</artifactId>
+        </dependency>
+        <!--Зависимость от базовых классов-->
+    </dependencies>
+
+</project>

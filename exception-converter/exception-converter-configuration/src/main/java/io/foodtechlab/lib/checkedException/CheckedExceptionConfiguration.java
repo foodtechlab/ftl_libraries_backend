@@ -1,0 +1,15 @@
+package ru.foodtechlab.lib.checkedException;
+
+import ru.foodtechlab.lib.checkedException.client.init.EnableCheckedExceptionRCoreErrorDecoderConfiguration;
+import ru.foodtechlab.lib.checkedException.converter.init.EnableCheckedExceptionService;
+import ru.foodtechlab.lib.checkedException.handler.init.EnableCheckedExceptionHandler;
+import ru.foodtechlab.lib.checkedException.rcore.handler.init.EnableCheckedExceptionRCoreHandler;
+import ru.foodtechlab.lib.checkedException.rcore.resource.init.EnableCheckedExceptionRCoreResource;
+
+@EnableCheckedExceptionHandler
+@EnableCheckedExceptionService
+@EnableCheckedExceptionRCoreErrorDecoderConfiguration
+@EnableCheckedExceptionRCoreResource
+@EnableCheckedExceptionRCoreHandler
+class CheckedExceptionConfiguration {
+}

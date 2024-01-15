@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.foodtechlab</groupId>
+        <artifactId>backend-libraries</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>common-entities</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common-entities-api</module>
+        <module>common-entities-core</module>
+        <module>common-entities-domain</module>
+        <module>common-entities-mongo</module>
+    </modules>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Библиотека которая содержит в себе дополнительные расширения BaseEntity из rcore</description>
+    <url>https://bitbucket.org/sushiveslarf/ftl_additional_base_entities_lib_backend</url>
+
+    <distributionManagement>
+        <repository>
+            <id>common-entities-releases</id>
+            <name>common-entities-releases</name>
+            <url>https://nexus.foodtech-lab.ru/repository/common-entities-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>common-entities-snapshots</id>
+            <name>common-entities-snapshots</name>
+            <url>https://nexus.foodtech-lab.ru/repository/common-entities-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <name>Zelinskiy Peter</name>
+            <email>zelinskiypk@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Vlados Kirianoff</name>
+            <email>kiryanovvi@sushivesla.team</email>
+        </developer>
+    </developers>
+
+</project>

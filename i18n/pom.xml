@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.foodtechlab</groupId>
+        <artifactId>backend-libraries</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>i18n</artifactId>
+    <packaging>pom</packaging>
+    <version>${revision}</version>
+
+    <modules>
+        <module>i18n-helper</module>
+        <module>i18n-core</module>
+        <module>i18n-translator</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>ftl-spring-i18n-helper-lib-releases</id>
+            <name>ftl-spring-i18n-helper-lib-releases</name>
+            <url>https://nexus.foodtech-lab.ru/repository/ftl-spring-i18n-helper-lib-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ftl-spring-i18n-helper-lib-snapshots</id>
+            <name>ftl-spring-i18n-helper-lib-snapshots</name>
+            <url>https://nexus.foodtech-lab.ru/repository/ftl-spring-i18n-helper-lib-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
