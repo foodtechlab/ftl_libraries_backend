@@ -1,4 +1,4 @@
-package ru.foodtechlab.replication;
+package io.foodtechlab.replication;
 
 import java.util.List;
 

@@ -14,6 +14,9 @@
     <packaging>pom</packaging>
     <version>${revision}</version>
 
+    <name>Microservice Integration</name>
+    <description>Provides the convenience of messaging between microservices through different channels</description>
+
     <modules>
         <module>microservice-integration-messaging</module>
         <module>microservice-integration-rest-api</module>

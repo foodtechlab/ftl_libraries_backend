@@ -12,6 +12,9 @@
     <artifactId>data-replication</artifactId>
     <version>${revision}</version>
 
+    <name>Data Replication</name>
+    <description>Provides convenience of data replication between microservices. Not supported.</description>
+
     <distributionManagement>
         <repository>
             <id>ftl-data-replication-helper-releases</id>

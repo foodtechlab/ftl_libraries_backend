@@ -13,6 +13,9 @@
     <artifactId>exception-converter</artifactId>
     <version>${revision}</version>
 
+    <name>Exception Converter</name>
+    <description>Provides native exception transfer between different microservices</description>
+
     <modules>
         <module>exception-converter-core</module>
         <module>exception-converter-configuration</module>

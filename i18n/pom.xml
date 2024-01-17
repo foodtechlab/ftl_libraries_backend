@@ -14,6 +14,9 @@
     <packaging>pom</packaging>
     <version>${revision}</version>
 
+    <name>i18n</name>
+    <description>Provides localization of applications into different languages</description>
+
     <modules>
         <module>i18n-helper</module>
         <module>i18n-core</module>

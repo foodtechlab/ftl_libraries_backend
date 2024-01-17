@@ -8,9 +8,8 @@
     <artifactId>backend-libraries</artifactId>
     <version>${revision}</version>
 
-
     <name>Foodtechlab Backend Libraries</name>
-    <description>Нобор библиотек для бекенд разработчиков от компании фудтех лаб</description>
+    <description>A set of libraries for backend developers from the Foodtechlab company</description>
 
     <licenses>
         <license>
@@ -27,8 +26,24 @@
             <email>zelinskiypk@sushivesla.team</email>
         </developer>
         <developer>
-            <name>Vlados Kirianoff</name>
+            <name>Kirianoff Vlados</name>
             <email>kiryanovvi@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Sasov Dmitry</name>
+            <email>sasovda@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Zelinskiy Roman</name>
+            <email>zelinskiyrk@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Maslov Rostislav</name>
+            <email>maslovra@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Tarasov Nikita</name>
+            <email>tarasovna@sushivesla.team</email>
         </developer>
     </developers>
 

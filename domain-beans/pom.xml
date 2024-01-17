@@ -10,6 +10,9 @@
     <artifactId>domain-beans</artifactId>
     <version>${revision}</version>
 
+    <name>Domain Beans</name>
+    <description>With the help of Spring, it automatically packages scripts and events into beans and ensures the implementation of dependencies. Experimental.</description>
+
     <distributionManagement>
         <repository>
             <id>domain-beans-releases</id>

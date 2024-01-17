@@ -12,6 +12,10 @@
 
     <artifactId>tests-helper</artifactId>
     <version>${revision}</version>
+
+    <name>Tests Helper</name>
+    <description>Provides convenience of testing. Not supported</description>
+
     <modules>
         <module>kafka-tests-helper</module>
         <module>wiremock-tests-helper</module>

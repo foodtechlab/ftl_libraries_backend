@@ -13,6 +13,9 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
+    <name>API Exception Handler</name>
+    <description>Returns exceptions in the Foodtechlab error response format</description>
+
     <modules>
         <module>api-exception-handler-core</module>
         <module>api-exception-handler-api</module>
