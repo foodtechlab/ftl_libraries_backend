@@ -12,6 +12,9 @@
     <artifactId>i18n-helper</artifactId>
     <version>${revision}</version>
 
+    <name>i18n helper</name>
+    <description>Simple localization of applications into different languages</description>
+
     <dependencies>
         <dependency>
             <groupId>io.foodtechlab</groupId>
@@ -19,4 +22,7 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

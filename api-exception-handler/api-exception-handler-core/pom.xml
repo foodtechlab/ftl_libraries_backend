@@ -9,6 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>API Exception Handler Core</name>
+    <description>Returns exceptions in the Foodtechlab error response format. Contain model. Does not depend on the Spring</description>
+
     <artifactId>api-exception-handler-core</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

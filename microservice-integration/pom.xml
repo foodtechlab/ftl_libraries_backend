@@ -34,18 +34,4 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>microservice-integration-releases</id>
-            <name>microservice-integration-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/microservice-integration-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>microservice-integration-snapshots</id>
-            <name>microservice-integration-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/microservice-integration-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>

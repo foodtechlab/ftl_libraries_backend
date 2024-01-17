@@ -40,18 +40,4 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>ftl-spring-i18n-helper-lib-releases</id>
-            <name>ftl-spring-i18n-helper-lib-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-spring-i18n-helper-lib-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ftl-spring-i18n-helper-lib-snapshots</id>
-            <name>ftl-spring-i18n-helper-lib-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-spring-i18n-helper-lib-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>

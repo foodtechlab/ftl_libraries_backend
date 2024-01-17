@@ -12,6 +12,9 @@
     <artifactId>i18n-translator</artifactId>
     <version>${revision}</version>
 
+    <name>i18n translator</name>
+    <description>Advanced localization of applications into different languages with regional features</description>
+
     <dependencies>
         <!--Инструменты для тестирования-->
         <dependency>
@@ -33,5 +36,9 @@
         </dependency>
         <!--Зависимость от базовых классов-->
     </dependencies>
+
+   <properties>
+       <disable.install.deploy>false</disable.install.deploy>
+   </properties>
 
 </project>

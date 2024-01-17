@@ -10,8 +10,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <name>Microservice Integration Feign Secured</name>
+    <description>Provides the convenience of messaging between microservices via secured Feign</description>
+
     <artifactId>feign-secure-commons</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!--Авторизация-->
@@ -28,4 +32,8 @@
         </dependency>
         <!--Внутренние модули-->
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

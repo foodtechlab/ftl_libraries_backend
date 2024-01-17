@@ -10,8 +10,16 @@
         <version>${revision}</version>
     </parent>
 
+    <name>API Exception Handler</name>
+    <description>Returns exceptions in the Foodtechlab error response format</description>
+
     <artifactId>api-exception-handler-api</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -53,7 +61,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

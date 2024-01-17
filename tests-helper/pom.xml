@@ -22,17 +22,4 @@
         <module>wiremock-tests-helper</module>
     </modules>
     <packaging>pom</packaging>
-
-    <distributionManagement>
-        <repository>
-            <id>ftl-tests-helpers-lib-releases</id>
-            <name>ftl-tests-helpers-lib-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-tests-helpers-lib-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ftl-tests-helpers-lib-snapshots</id>
-            <name>ftl-tests-helpers-lib-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-tests-helpers-lib-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>

@@ -9,8 +9,17 @@
         <version>${revision}</version>
     </parent>
 
+    <name>Microservice Integration Kafka</name>
+    <description>Provides the convenience of messaging between microservices via Kafka</description>
+
     <artifactId>kafka-commons</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
+
 
     <dependencies>
         <!--                Kafka-->

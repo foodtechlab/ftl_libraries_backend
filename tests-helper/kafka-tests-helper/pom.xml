@@ -12,6 +12,9 @@
     <artifactId>kafka-tests-helper</artifactId>
     <version>${revision}</version>
 
+    <name>Tests Helper for Kafka</name>
+    <description>Provides convenience of Kafka testing . Not supported</description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -24,4 +27,7 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

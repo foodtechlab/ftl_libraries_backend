@@ -9,6 +9,9 @@
     </parent>
     <packaging>jar</packaging>
 
+    <name>Common Entities Domain</name>
+    <description>Contains a set of common basic business entities for domain module</description>
+
     <artifactId>common-entities-domain</artifactId>
     <version>${revision}</version>
 
@@ -26,4 +29,8 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

@@ -32,18 +32,4 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>api-exception-handler-releases</id>
-            <name>api-exception-handler-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/api-exception-handler-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>api-exception-handler-snapshots</id>
-            <name>api-exception-handler-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/api-exception-handler-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>

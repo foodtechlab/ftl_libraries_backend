@@ -10,8 +10,12 @@
         <version>${revision}</version>
     </parent>
 
+    <name>Microservice Integration Feign not Secured</name>
+    <description>Provides the convenience of messaging between microservices via not secured Feign</description>
+
     <artifactId>feign-commons</artifactId>
     <version>${revision}</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!--Spring-->
@@ -57,4 +61,8 @@
         </dependency>
         <!--Rcore-->
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

@@ -12,10 +12,17 @@
     <artifactId>wiremock-tests-helper</artifactId>
     <version>${revision}</version>
 
+    <name>Tests Helper with Wiremock</name>
+    <description>Provides convenience of testing with Wiremock. Not supported</description>
+
     <dependencies>
         <dependency>
             <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

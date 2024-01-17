@@ -16,24 +16,15 @@
     <description>Provides convenience of data replication between microservices. Not supported.</description>
     <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/data-replication/README.md</url>
 
-    <distributionManagement>
-        <repository>
-            <id>ftl-data-replication-helper-releases</id>
-            <name>ftl-data-replication-helper-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-data-replication-helper-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ftl-data-replication-helper-snapshots</id>
-            <name>ftl-data-replication-helper-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/ftl-data-replication-helper-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 
 </project>

@@ -25,18 +25,4 @@
         <module>common-entities-domain</module>
         <module>common-entities-mongo</module>
     </modules>
-
-    <distributionManagement>
-        <repository>
-            <id>common-entities-releases</id>
-            <name>common-entities-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/common-entities-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>common-entities-snapshots</id>
-            <name>common-entities-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/common-entities-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>

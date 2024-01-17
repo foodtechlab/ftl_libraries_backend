@@ -10,9 +10,13 @@
         <version>${revision}</version>
     </parent>
 
+    <name>Exception Converter Core</name>
+    <description>Provides native exception transfer between different microservices. Main converter.</description>
+
+
     <artifactId>exception-converter-core</artifactId>
     <version>${revision}</version>
-
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -45,4 +49,8 @@
             <artifactId>log4j-core</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>

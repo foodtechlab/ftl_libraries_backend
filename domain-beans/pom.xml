@@ -14,19 +14,6 @@
     <description>With the help of Spring, it automatically packages scripts and events into beans and ensures the implementation of dependencies. Experimental.</description>
     <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/domain-beans/README.md</url>
 
-    <distributionManagement>
-        <repository>
-            <id>domain-beans-releases</id>
-            <name>domain-beans-releases</name>
-            <url>https://nexus.foodtech-lab.ru/repository/domain-beans-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>domain-beans-snapshots</id>
-            <name>domain-beans-snapshots</name>
-            <url>https://nexus.foodtech-lab.ru/repository/domain-beans-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.github.rostislav-maslov.rcore</groupId>
@@ -53,5 +40,9 @@
             <artifactId>typetools</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 
 </project>

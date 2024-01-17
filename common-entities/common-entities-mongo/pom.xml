@@ -9,6 +9,9 @@
     </parent>
     <packaging>jar</packaging>
 
+    <name>Common Entities Mongo</name>
+    <description>Contains a set of common basic business entities for database mongo module</description>
+
     <artifactId>common-entities-mongo</artifactId>
     <version>${revision}</version>
 
@@ -30,4 +33,8 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <disable.install.deploy>false</disable.install.deploy>
+    </properties>
 </project>
