@@ -15,6 +15,7 @@
 
     <name>Tests Helper</name>
     <description>Provides convenience of testing. Not supported</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/tests-helper/README.md</url>
 
     <modules>
         <module>kafka-tests-helper</module>

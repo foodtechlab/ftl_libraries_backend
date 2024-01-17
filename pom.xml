@@ -10,6 +10,7 @@
 
     <name>Foodtechlab Backend Libraries</name>
     <description>A set of libraries for backend developers from the Foodtechlab company</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend</url>
 
     <licenses>
         <license>
@@ -18,8 +19,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-
+    
     <developers>
         <developer>
             <name>Zelinskiy Peter</name>
@@ -44,6 +44,14 @@
         <developer>
             <name>Tarasov Nikita</name>
             <email>tarasovna@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Kozlov Vladimir</name>
+            <email>kozlovva@sushivesla.team</email>
+        </developer>
+        <developer>
+            <name>Uskov Iliya</name>
+            <email>uskovid@sushivesla.team</email>
         </developer>
     </developers>
 

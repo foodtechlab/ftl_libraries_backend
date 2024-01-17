@@ -15,6 +15,7 @@
 
     <name>API Exception Handler</name>
     <description>Returns exceptions in the Foodtechlab error response format</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/api-exception-handler/README.md</url>
 
     <modules>
         <module>api-exception-handler-core</module>

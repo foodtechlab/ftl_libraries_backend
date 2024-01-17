@@ -12,6 +12,7 @@
 
     <name>Domain Beans</name>
     <description>With the help of Spring, it automatically packages scripts and events into beans and ensures the implementation of dependencies. Experimental.</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/domain-beans/README.md</url>
 
     <distributionManagement>
         <repository>

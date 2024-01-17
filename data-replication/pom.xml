@@ -14,6 +14,7 @@
 
     <name>Data Replication</name>
     <description>Provides convenience of data replication between microservices. Not supported.</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/data-replication/README.md</url>
 
     <distributionManagement>
         <repository>

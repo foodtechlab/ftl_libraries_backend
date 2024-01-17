@@ -17,7 +17,7 @@
 
     <name>Common Entities</name>
     <description>Contains a set of common basic business entities</description>
-    <url>https://bitbucket.org/sushiveslarf/ftl_additional_base_entities_lib_backend</url>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/common-entities/README.md</url>
 
     <modules>
         <module>common-entities-api</module>

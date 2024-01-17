@@ -16,6 +16,7 @@
 
     <name>i18n</name>
     <description>Provides localization of applications into different languages</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/i18n/README.md</url>
 
     <modules>
         <module>i18n-helper</module>

@@ -15,6 +15,7 @@
 
     <name>Exception Converter</name>
     <description>Provides native exception transfer between different microservices</description>
+    <url>https://github.com/foodtechlab/ftl_libraries_backend/blob/master/exception-converter/README.md</url>
 
     <modules>
         <module>exception-converter-core</module>
