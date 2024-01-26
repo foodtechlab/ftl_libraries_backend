@@ -16,6 +16,7 @@ public class BaseDeleteAdminResponse extends BaseAdminResponse {
     @ApiModelProperty("Признак того что объект удалён")
     protected boolean deleted;
 
+
     /**
      * Заполнить ответ стандартными значениями
      * <p>
@@ -33,4 +34,7 @@ public class BaseDeleteAdminResponse extends BaseAdminResponse {
         return (T) BaseAdminResponse.fill(builder, entity)
                 .deleted(entity.isDeleted());
     }
+
+    //Спасёт нас от delombok при генерации документации
+    public static abstract class BaseDeleteAdminResponseBuilder <C extends BaseDeleteAdminResponse, B extends BaseDeleteAdminResponseBuilder<C, B>> extends BaseAdminResponseBuilder<C, B> {}
 }

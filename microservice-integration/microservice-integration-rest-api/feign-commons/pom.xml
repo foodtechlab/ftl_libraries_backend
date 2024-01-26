@@ -39,13 +39,17 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
         <!--Feign-->
 
 
         <!--Обработчик ошибок-->
         <dependency>
             <groupId>io.foodtechlab</groupId>
-            <artifactId>api-exception-handler-core</artifactId>
+            <artifactId>api-exception-handler-api</artifactId>
         </dependency>
         <!--Обработчик ошибок-->
 

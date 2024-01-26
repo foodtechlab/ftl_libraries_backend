@@ -12,9 +12,8 @@ public class ExampleSecureErrorDecoder extends AuthorizationErrorDecoder {
         super(mapper, accessTokenService);
     }
 
-    //todo!!!!! Исправить как только обновляться библиотеки ауфсервиса до необходимой версии
-//    @Override
-//    public Exception decode(ErrorApiResponse<Error> errorApiResponse) {
-//        return new HttpCommunicationException(errorApiResponse);
-//    }
+    @Override
+    public Exception decode(ErrorApiResponse<Error> errorApiResponse) {
+        return new HttpCommunicationException(errorApiResponse);
+    }
 }

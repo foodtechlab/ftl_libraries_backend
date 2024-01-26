@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>io.foodtechlab</groupId>
-            <artifactId>api-exception-handler-core</artifactId>
+            <artifactId>api-exception-handler-api</artifactId>
         </dependency>
     </dependencies>
 </project>

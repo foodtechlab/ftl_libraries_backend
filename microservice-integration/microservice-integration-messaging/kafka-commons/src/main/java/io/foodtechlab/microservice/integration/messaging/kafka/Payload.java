@@ -25,4 +25,6 @@ public abstract class Payload {
                 .traceId(event.getTraceId())
                 .timestamp(event.getDate());
     }
+
+    public abstract static class PayloadBuilder<C extends Payload, B extends Payload.PayloadBuilder<C, B>>{}
 }

@@ -22,6 +22,17 @@
 </dependency>
 ```
 
+## Spring Boot
+
+Так же не забудьте что раз пакет в приложении поменялись то нужно будет дополнительно настроить 
+сканирование пакетов.
+```java
+@SpringBootApplication(
+        scanBasePackages = {"com.rcore", "ru.foodtechlab", "io.foodtechlab"},
+        exclude = {EmbeddedMongoAutoConfiguration.class}
+)
+```
+
 ## Версия
 
 Версия всех библиотек теперь едина и начинается с 4.0.0.
@@ -36,8 +47,8 @@
 |----------|----------------------------|------------------------------|
 | Название | ftl-api-error-handling-lib | api-exception-handler        |
 | GroupId  | ru.foodtechlab.aeh         | io.foodtechlab               |
-| Модули   | core                       | api-exception-handler-api    |
-|          | spring-api-error-handling  | api-exception-handler-core   |
+| Модули   | core                       | api-exception-handler-core   |
+|          | spring-api-error-handling  | api-exception-handler-api    |
 | Пакет    | ru.foodtechlab.aeh         | io.foodtechlab.exceptionable |
 
 ### common-entities

@@ -98,12 +98,13 @@
         <!--Spring-->
 
         <!--Feign-->
-        <feign.version>3.1.1</feign.version>
-        <feign-core.version>11.8</feign-core.version>
+        <feign.version>3.1.4</feign.version>
+        <feign-core.version>11.7</feign-core.version>
+        <common-io.version>2.11.0</common-io.version>
         <!--Feign-->
 
         <!--Auth-->
-        <auth-lib.version>3.1.8</auth-lib.version>
+        <auth-lib.version>3.9.8-SNAPSHOT</auth-lib.version>
         <!--Auth-->
 
         <!--Rcore-->
@@ -177,14 +178,14 @@
 
     <distributionManagement>
         <repository>
-            <id>push-test</id>
-            <name>Test Repository</name>
-            <url>https://nexus.foodtech-lab.ru/repository/push-test/</url>
+            <id>backend-libraries</id>
+            <name>Backend Libraries Repository</name>
+            <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
         </repository>
         <snapshotRepository>
-            <id>push-test</id>
-            <name>Test Repository</name>
-            <url>https://nexus.foodtech-lab.ru/repository/push-test/</url>
+            <id>backend-libraries</id>
+            <name>Backend Libraries Repository</name>
+            <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -262,6 +263,23 @@
                 <configuration>
                     <source>${java}</source>
                     <target>${java}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${mapstruct-lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
@@ -593,6 +611,11 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-core</artifactId>
                 <version>${feign-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${common-io.version}</version>
             </dependency>
 
             <!--Feign-->

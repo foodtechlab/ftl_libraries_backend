@@ -28,3 +28,4 @@ replay_pid*
 ftl_libraries_backend.iml
 target
 *.iml
+.flattened-pom.xml
