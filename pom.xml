@@ -205,12 +205,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${build.deploy.version}</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -241,20 +238,25 @@
                 </executions>
             </plugin>
 
-            <!-- <plugin>
+             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>${build.nexus.version}</version>
                 <executions>
                     <execution>
                         <id>default-deploy</id>
-                        <phase>none</phase>
+                        <phase>deploy</phase>
                         <goals>
                             <goal>deploy</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+                 <configuration>
+                     <serverId>backend-libraries</serverId>
+                     <nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</nexusUrl>
+                     <skipStaging>true</skipStaging>
+                 </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
