@@ -10,6 +10,10 @@
         <version>${revision}</version>
     </parent>
 
+    <name>Exception Converter Resource</name>
+    <description>Provides native exception transfer between different microservices. Resource module</description>
+
+
     <artifactId>exception-converter-resource</artifactId>
     <version>${revision}</version>
 

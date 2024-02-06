@@ -13,6 +13,9 @@
     <artifactId>exception-converter-handler</artifactId>
     <version>${revision}</version>
 
+    <name>Exception Converter Handler</name>
+    <description>Provides native exception transfer between different microservices. Handler module</description>
+
 
     <dependencies>
         <dependency>

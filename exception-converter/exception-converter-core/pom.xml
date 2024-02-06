@@ -49,8 +49,4 @@
             <artifactId>log4j-core</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <disable.install.deploy>false</disable.install.deploy>
-    </properties>
 </project>

@@ -12,6 +12,10 @@
 
     <artifactId>exception-converter-rcore-domain</artifactId>
     <version>${revision}</version>
+
+    <name>Exception Converter Rcore Domain</name>
+    <description>Provides native exception transfer between different microservices. Rcore Domain module</description>
+
     <dependencies>
         <dependency>
             <groupId>com.github.rostislav-maslov.rcore</groupId>

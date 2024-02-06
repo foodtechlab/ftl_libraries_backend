@@ -11,4 +11,7 @@
 
     <artifactId>i18n-core</artifactId>
     <version>${revision}</version>
+
+    <name>i18n Core</name>
+    <description>Simple localization of applications into different languages. Contains Russian Locale</description>
 </project>

@@ -16,8 +16,4 @@
     <artifactId>exception-converter-domain</artifactId>
     <version>${revision}</version>
     <packaging>jar</packaging>
-
-    <properties>
-        <disable.install.deploy>false</disable.install.deploy>
-    </properties>
 </project>

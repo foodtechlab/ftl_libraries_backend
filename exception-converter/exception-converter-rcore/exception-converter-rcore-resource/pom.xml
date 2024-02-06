@@ -13,6 +13,9 @@
     <artifactId>exception-converter-rcore-resource</artifactId>
     <version>${revision}</version>
 
+    <name>Exception Converter Rcore Resource</name>
+    <description>Provides native exception transfer between different microservices. Rcore Resource module</description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

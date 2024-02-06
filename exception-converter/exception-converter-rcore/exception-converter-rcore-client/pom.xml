@@ -13,6 +13,9 @@
     <artifactId>exception-converter-rcore-client</artifactId>
     <version>${revision}</version>
 
+    <name>Exception Converter Rcore Client</name>
+    <description>Provides native exception transfer between different microservices. Rcore Client module</description>
+
 
     <dependencies>
         <dependency>

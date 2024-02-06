@@ -14,6 +14,9 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
+    <name>Microservice Integration Rest API POM</name>
+    <description>Provides the convenience of messaging between microservices through different channels. This is REST API chanel</description>
+
     <modules>
         <module>feign-commons</module>
         <module>feign-secure-commons</module>

@@ -13,6 +13,8 @@
     <artifactId>exception-converter-configuration</artifactId>
     <version>${revision}</version>
 
+    <name>Exception Converter Configuration</name>
+    <description>Provides native exception transfer between different microservices. Configuration module.</description>
 
     <dependencies>
         <dependency>

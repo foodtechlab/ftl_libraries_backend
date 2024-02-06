@@ -14,6 +14,9 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
+    <name>Exception Converter Handler</name>
+    <description>Provides native exception transfer between different microservices. Rcore module</description>
+
     <modules>
         <module>exception-converter-rcore-client</module>
         <module>exception-converter-rcore-domain</module>

@@ -81,7 +81,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.0.0-SNAPSHOT</revision>
+        <revision>4.0.0</revision>
 
         <!--Kafka-->
         <spring-kafka.version>2.6.6</spring-kafka.version>
@@ -381,6 +381,10 @@
                     </plugin>
                 </plugins>
             </build>
+
+            <properties>
+                <use-gpg2>true</use-gpg2>
+            </properties>
 
             <distributionManagement>
                 <repository>

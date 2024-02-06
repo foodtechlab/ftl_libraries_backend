@@ -65,8 +65,4 @@
         </dependency>
         <!--Rcore-->
     </dependencies>
-
-    <properties>
-        <disable.install.deploy>false</disable.install.deploy>
-    </properties>
 </project>

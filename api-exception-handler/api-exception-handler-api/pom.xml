@@ -17,10 +17,6 @@
     <version>${revision}</version>
     <packaging>jar</packaging>
 
-    <properties>
-        <disable.install.deploy>false</disable.install.deploy>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.foodtechlab</groupId>
