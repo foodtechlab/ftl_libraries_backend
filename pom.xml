@@ -154,13 +154,17 @@
 
         <java>11</java>
 
-        <build.surefire.version>2.10</build.surefire.version>
+        <build.surefire.version>3.2.5</build.surefire.version>
         <build.deploy.version>2.8.1</build.deploy.version>
-        <build.nexus.version>1.5.1</build.nexus.version>
+        <build.nexus.version>1.6.7</build.nexus.version>
         <build.source.version>2.2.1</build.source.version>
         <build.doc.version>2.9.1</build.doc.version>
         <build.compiler.version>3.8.1</build.compiler.version>
         <build.flatten.version>1.2.5</build.flatten.version>
+        <build.gpg.version>1.6</build.gpg.version>
+
+        <deploy.serverId>backend-libraries</deploy.serverId>
+        <deploy.nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</deploy.nexusUrl>
         <!--Build and Deploy-->
 
         <disable.install.deploy>true</disable.install.deploy>
@@ -176,22 +180,11 @@
         </repository>
     </repositories>
 
-    <distributionManagement>
-        <repository>
-            <id>backend-libraries</id>
-            <name>Backend Libraries Repository</name>
-            <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
-        </repository>
-        <snapshotRepository>
-            <id>backend-libraries</id>
-            <name>Backend Libraries Repository</name>
-            <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <includes>
@@ -238,26 +231,6 @@
                 </executions>
             </plugin>
 
-             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${build.nexus.version}</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                 <configuration>
-                     <serverId>backend-libraries</serverId>
-                     <nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</nexusUrl>
-                     <skipStaging>true</skipStaging>
-                 </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -292,6 +265,14 @@
                 <version>${build.flatten.version}</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
+                    <pomElements>
+                        <name/>
+                        <description/>
+                        <developers/>
+                        <contributors/>
+                        <url/>
+                        <scm/>
+                    </pomElements>
                 </configuration>
                 <executions>
                     <execution>
@@ -312,6 +293,109 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>nexus</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${build.nexus.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <serverId>${deploy.serverId}</serverId>
+                            <nexusUrl>${deploy.serverId}</nexusUrl>
+                            <skipStaging>true</skipStaging>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <distributionManagement>
+                <repository>
+                    <id>backend-libraries</id>
+                    <name>Backend Libraries Repository</name>
+                    <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>backend-libraries</id>
+                    <name>Backend Libraries Repository</name>
+                    <url>https://nexus.foodtech-lab.ru/repository/backend-libraries/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>maven-central</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${build.nexus.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default-deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${build.gpg.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <distributionManagement>
+                <repository>
+                    <id>ossrh</id>
+                    <name>Maven Central</name>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <name>Maven Central</name>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
