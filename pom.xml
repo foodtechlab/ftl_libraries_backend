@@ -161,7 +161,7 @@
         <build.doc.version>2.9.1</build.doc.version>
         <build.compiler.version>3.8.1</build.compiler.version>
         <build.flatten.version>1.2.5</build.flatten.version>
-        <gpg.version>3.1.0</gpg.version>
+        <build.gpg.version>3.1.0</build.gpg.version>
 
         <deploy.serverId>backend-libraries</deploy.serverId>
         <deploy.nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</deploy.nexusUrl>
@@ -368,7 +368,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${gpg.version}</version>
+                        <version>${build.gpg.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -376,23 +376,11 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                                <configuration>
-                                    <keyname>${gpg.keyname}</keyname>
-                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                    <gpgArguments>
-                                        <argument>--pinentry-mode</argument>
-                                        <argument>loopback</argument>
-                                    </gpgArguments>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
                 </plugins>
             </build>
-
-            <properties>
-                <use-gpg2>true</use-gpg2>
-            </properties>
 
             <distributionManagement>
                 <repository>
