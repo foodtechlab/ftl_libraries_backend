@@ -26,14 +26,6 @@
             <artifactId>mapstruct</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.foodtechlab</groupId>
             <artifactId>exception-converter-rcore-domain</artifactId>
         </dependency>

@@ -19,7 +19,6 @@
 
     <modules>
         <module>feign-commons</module>
-        <module>feign-secure-commons</module>
     </modules>
 
 </project>

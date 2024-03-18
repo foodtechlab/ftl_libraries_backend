@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>ru.foodtechlab</groupId>
+        <artifactId>ftl-dependency-lib</artifactId>
+        <version>${dependency-lib.version}</version>
+    </parent>
+
     <groupId>io.foodtechlab</groupId>
     <artifactId>backend-libraries</artifactId>
     <version>${revision}</version>
@@ -81,72 +87,8 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.0.0</revision>
-
-        <!--Kafka-->
-        <spring-kafka.version>2.6.6</spring-kafka.version>
-        <apache-kafka-streams.version>3.0.0</apache-kafka-streams.version>
-        <!--Kafka-->
-
-        <!--Spring-->
-        <spring.version>5.3.20</spring.version>
-
-        <spring-context.version>5.3.5</spring-context.version>
-        <spring-web.version>5.3.15</spring-web.version>
-        <spring-boot.version>2.6.7</spring-boot.version>
-        <spring-cloud.version>2021.0.2</spring-cloud.version>
-        <!--Spring-->
-
-        <!--Feign-->
-        <feign.version>3.1.4</feign.version>
-        <feign-core.version>11.7</feign-core.version>
-        <common-io.version>2.11.0</common-io.version>
-        <!--Feign-->
-
-        <!--Auth-->
-        <auth-lib.version>3.9.8-SNAPSHOT</auth-lib.version>
-        <!--Auth-->
-
-        <!--Rcore-->
-        <rcore.version>1.0.25</rcore.version>
-        <!--Rcore-->
-
-        <!--Jackson-->
-        <jackson-databind.version>2.13.0</jackson-databind.version>
-        <!--Jackson-->
-
-        <!--Sleuth-->
-        <sleuth.version>3.0.0</sleuth.version>
-        <!--Sleuth-->
-
-        <!--Lombok-->
-        <lombok.version>1.18.30</lombok.version>
-        <!--Lombok-->
-
-        <!--Logging-->
-        <slf4j.version>1.7.36</slf4j.version>
-        <slf4j-new.version>2.22.1</slf4j-new.version>
-
-        <!--Logging-->
-
-        <!--Testing-->
-        <junit.version>5.8.2</junit.version>
-        <mockito.version>4.6.1</mockito.version>
-        <wiremock.version>3.3.1</wiremock.version>
-        <!--Testing-->
-
-        <!--Typetools-->
-        <typetools.version>0.6.3</typetools.version>
-        <!--Typetools-->
-
-        <!--Swagger-->
-        <swagger.version>1.6.6</swagger.version>
-        <!--Swagger-->
-
-        <!--Mapstruct-->
-        <mapstruct.version>1.5.2.Final</mapstruct.version>
-        <mapstruct-lombok.version>0.2.0</mapstruct-lombok.version>
-        <!--Mapstruct-->
+        <revision>4.0.1-SNAPSHOT</revision>
+        <dependency-lib.version>4.0.1-SNAPSHOT</dependency-lib.version>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -154,22 +96,9 @@
 
         <java>11</java>
 
-        <build.surefire.version>3.2.5</build.surefire.version>
-        <build.deploy.version>2.8.1</build.deploy.version>
-        <build.nexus.version>1.6.7</build.nexus.version>
-        <build.source.version>2.2.1</build.source.version>
-        <build.doc.version>2.9.1</build.doc.version>
-        <build.compiler.version>3.8.1</build.compiler.version>
-        <build.flatten.version>1.2.5</build.flatten.version>
-        <build.gpg.version>3.1.0</build.gpg.version>
-
         <deploy.serverId>backend-libraries</deploy.serverId>
         <deploy.nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</deploy.nexusUrl>
         <!--Build and Deploy-->
-
-        <disable.install.deploy>true</disable.install.deploy>
-        <maven.install.skip>${disable.install.deploy}</maven.install.skip>
-        <maven.deploy.skip>${disable.install.deploy}</maven.deploy.skip>
     </properties>
 
 
@@ -234,7 +163,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${build.compiler.version}</version>
+                <version>${build.compile.version}</version>
                 <configuration>
                     <source>${java}</source>
                     <target>${java}</target>
@@ -252,7 +181,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>${mapstruct-lombok.version}</version>
+                            <version>${lombok-mapstruct-binding.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -297,10 +226,6 @@
     <profiles>
         <profile>
             <id>nexus</id>
-
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
 
             <build>
                 <plugins>
@@ -348,7 +273,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${build.nexus.version}</version>
+                        <version>${build.nexus-staging.version}</version>
                         <executions>
                             <execution>
                                 <id>default-deploy</id>
@@ -399,30 +324,10 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>io.foodtechlab</groupId>
                 <artifactId>tests-helper</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.foodtechlab</groupId>
-                <artifactId>kafka-tests-helper</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
@@ -606,208 +511,6 @@
                 <version>${revision}</version>
             </dependency>
             <!--api-exception-handler-->
-
-            <!--wiremock-->
-            <dependency>
-                <groupId>org.wiremock</groupId>
-                <artifactId>wiremock</artifactId>
-                <version>${wiremock.version}</version>
-            </dependency>
-            <!--wiremock-->
-
-            <!--kafka-->
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>spring-kafka</artifactId>
-                <version>${spring-kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>spring-kafka-test</artifactId>
-                <version>${spring-kafka.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-streams</artifactId>
-                <version>${apache-kafka-streams.version}</version>
-            </dependency>
-            <!--kafka-->
-
-
-            <!--lombok-->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-            <!--lombok-->
-
-
-            <!--jackson-->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson-databind.version}</version>
-            </dependency>
-            <!--jackson-->
-
-            <!--Авторизация-->
-            <dependency>
-                <groupId>ru.foodtechlab.lib</groupId>
-                <artifactId>auth-integration-restapi-feign-authorization</artifactId>
-                <version>${auth-lib.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ru.foodtechlab.lib</groupId>
-                <artifactId>auth-integration-restapi-feign-commons</artifactId>
-                <version>${auth-lib.version}</version>
-            </dependency>
-            <!--Авторизация-->
-
-            <!--Spring-->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring-context.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring-web.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-sleuth</artifactId>
-                <version>${sleuth.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-            <!--Spring-->
-
-            <!--Feign-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-openfeign-core</artifactId>
-                <version>${feign.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.openfeign</groupId>
-                <artifactId>feign-core</artifactId>
-                <version>${feign-core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${common-io.version}</version>
-            </dependency>
-
-            <!--Feign-->
-
-
-            <!--Rcore-->
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-rest-api-commons</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-rest-api-spring-commons</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-event-driven</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-domain-commons</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-domain-security</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-database-mongo-commons</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.rostislav-maslov.rcore</groupId>
-                <artifactId>rcore-commons</artifactId>
-                <version>${rcore.version}</version>
-            </dependency>
-            <!--Rcore-->
-
-            <!--Logging-->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${slf4j-new.version}</version>
-            </dependency>
-
-            <!--Logging-->
-
-            <!--Инструменты для тестирования-->
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <scope>test</scope>
-                <version>${junit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <scope>test</scope>
-                <version>${mockito.version}</version>
-            </dependency>
-            <!--Инструменты для тестирования-->
-
-
-            <!--typetools-->
-            <dependency>
-                <groupId>net.jodah</groupId>
-                <artifactId>typetools</artifactId>
-                <version>${typetools.version}</version>
-            </dependency>
-            <!--typetools-->
-
-            <!--Swagger-->
-            <dependency>
-                <groupId>io.swagger</groupId>
-                <artifactId>swagger-annotations</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-            <!--Swagger-->
-
-            <!--Mapstruct-->
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct</artifactId>
-                <version>${mapstruct.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct-processor</artifactId>
-                <version>${mapstruct.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-mapstruct-binding</artifactId>
-                <version>${mapstruct-lombok.version}</version>
-            </dependency>
-            <!--Mapstruct-->
         </dependencies>
     </dependencyManagement>
 
