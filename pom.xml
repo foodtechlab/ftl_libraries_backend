@@ -231,7 +231,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${build.nexus.version}</version>
+                        <version>${build.nexus-staging.version}</version>
                         <executions>
                             <execution>
                                 <id>default-deploy</id>
