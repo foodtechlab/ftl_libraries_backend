@@ -13,11 +13,11 @@ public class PhoneNumberParser {
     public static PhoneNumberInfo parsePhoneNumber(String phoneNumber, String isoTwoLetterCountryCode) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
 
-        boolean isCountryCodeAbsent = false;
+        boolean isCountryCodeNull = false;
         String countryCode = isoTwoLetterCountryCode;
         if (isoTwoLetterCountryCode == null || isoTwoLetterCountryCode.isBlank()) {
             countryCode = Country.findByPhoneNumber(phoneNumber);
-            isCountryCodeAbsent = true;
+            isCountryCodeNull = true;
         }
         PhoneNumberUtil.PhoneNumberType type = PhoneNumberUtil.PhoneNumberType.UNKNOWN;
 
@@ -40,7 +40,7 @@ public class PhoneNumberParser {
             if (StringUtils.hasText(normalizedNumber)) {
                 normalizedNumber = "+" + normalizedNumber;
             }
-            PhoneNumberParseErrorType invalidReason = isCountryCodeAbsent && e.getErrorType().equals(NumberParseException.ErrorType.INVALID_COUNTRY_CODE)
+            PhoneNumberParseErrorType invalidReason = isCountryCodeNull && e.getErrorType().equals(NumberParseException.ErrorType.INVALID_COUNTRY_CODE)
                     ? PhoneNumberParseErrorType.ISO_TWO_LETTER_COUNTRY_CODE_IS_REQUIRED
                     : PhoneNumberParseErrorType.fromNumberParseException(e.getErrorType());
             return new PhoneNumberInfo(normalizedNumber, countryCode, type, false, invalidReason);
