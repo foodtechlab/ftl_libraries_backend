@@ -7,7 +7,7 @@
     <parent>
         <groupId>ru.foodtechlab</groupId>
         <artifactId>ftl-dependency-lib</artifactId>
-        <version>${dependency-lib.version}</version>
+        <version>4.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>io.foodtechlab</groupId>
@@ -88,7 +88,6 @@
 
     <properties>
         <revision>4.0.1-SNAPSHOT</revision>
-        <dependency-lib.version>4.0.1-SNAPSHOT</dependency-lib.version>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
