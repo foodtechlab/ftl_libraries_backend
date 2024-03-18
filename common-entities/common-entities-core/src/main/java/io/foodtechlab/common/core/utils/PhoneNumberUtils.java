@@ -1,14 +1,20 @@
 package io.foodtechlab.common.core.utils;
 
-import io.foodtechlab.common.core.entities.PhoneNumber;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-@Deprecated(forRemoval = false)
 public class PhoneNumberUtils {
-
-    @Deprecated(forRemoval = false)
-    public String removeSymbols(String string) {
-        return PhoneNumber.format(string);
+    /**
+     * Метод для нормализации телефонного номера (удаление всех нецифровых символов).
+     *
+     * @param phoneNumber телефонный номер
+     *
+     * @return нормализованный телефонный номер
+     */
+    public static String normalizePhoneNumber(String phoneNumber) {
+        if (phoneNumber == null) {
+            return null;
+        }
+        return phoneNumber.replaceAll("\\D", "").trim();
     }
 }
