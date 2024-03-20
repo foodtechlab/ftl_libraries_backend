@@ -1,9 +1,11 @@
 package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.utils.PhoneNumberUtils;
+import io.foodtechlab.common.core.utils.PhoneNumberNormalizer;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -23,36 +25,35 @@ import java.util.Set;
  * <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BB%D0%B0%D0%BD_%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0">Телефонный план нумерации Казахстана</a>
  */
 @Getter
+@AllArgsConstructor
 public enum Country {
-    RUSSIA("RU", Set.of(7, 8), Set.of("3", "4", "5", "8", "9")),
-    KAZAKHSTAN("KZ", Set.of(7), Set.of("6", "7")),
-    UNITED_ARAB_EMIRATES("AE", Set.of(971), Collections.emptySet());
+    RUSSIA("RU", Set.of(7, 8), Set.of("3", "4", "5", "8", "9"), "7", "+7 ([000]) [000] [00] [00]", "Russian Federation"),
+    KAZAKHSTAN("KZ", Set.of(7), Set.of("6", "7"), "7", "+7 ([000]) [000] [00] [00]", "Kazakhstan"),
+    UNITED_ARAB_EMIRATES("AE", Set.of(971), Collections.emptySet(), "971", "+(971 [00]) [000] [00] [00]", "United Arab Emirates");
 
     private final String isoTwoLetterCountryCode;
     private final Set<Integer> phoneCodes;
     private final Set<String> phonePrefixes;
+    private final String defaultPhoneCode;
+    private final String phoneMask;
+    private final String name;
 
-    Country(String isoTwoLetterCountryCode, Set<Integer> phoneCodes, Set<String> phonePrefixes) {
-        this.isoTwoLetterCountryCode = isoTwoLetterCountryCode;
-        this.phoneCodes = phoneCodes;
-        this.phonePrefixes = phonePrefixes;
-    }
-
-    public static String findByPhoneNumber(String phoneNumber) {
-        String normalizedPhoneNumber = PhoneNumberUtils.normalizePhoneNumber(phoneNumber);
+    public static Optional<Country> findByPhoneNumber(String phoneNumber) {
+        String normalizedPhoneNumber = PhoneNumberNormalizer.normalizePhoneNumber(phoneNumber);
 
         for (Country currentCountry : Country.values()) {
             for (Integer countryCallingCode : currentCountry.phoneCodes) {
                 String codeAsString = countryCallingCode.toString();
                 if (normalizedPhoneNumber.startsWith(codeAsString)) {
                     String numberWithoutCode = normalizedPhoneNumber.substring(codeAsString.length());
-                    if (!currentCountry.phonePrefixes.isEmpty() && !currentCountry.phonePrefixes.contains(numberWithoutCode.substring(0, 1))) {
-                        continue;
+                    for (String phonePrefix : currentCountry.phonePrefixes) {
+                        if (numberWithoutCode.startsWith(phonePrefix)) {
+                            return Optional.of(currentCountry);
+                        }
                     }
-                    return currentCountry.isoTwoLetterCountryCode;
                 }
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

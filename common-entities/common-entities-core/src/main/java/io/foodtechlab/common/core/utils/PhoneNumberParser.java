@@ -6,8 +6,12 @@ import com.google.i18n.phonenumbers.Phonenumber;
 import com.rcore.commons.utils.StringUtils;
 import io.foodtechlab.common.core.entities.Country;
 import io.foodtechlab.common.core.types.PhoneNumberParseErrorType;
+import io.foodtechlab.common.core.types.PhoneNumberType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+
+import java.util.Optional;
 
 public class PhoneNumberParser {
     public static PhoneNumberInfo parsePhoneNumber(String phoneNumber, String isoTwoLetterCountryCode) {
@@ -16,16 +20,19 @@ public class PhoneNumberParser {
         boolean isCountryCodeNull = false;
         String countryCode = isoTwoLetterCountryCode;
         if (isoTwoLetterCountryCode == null || isoTwoLetterCountryCode.isBlank()) {
-            countryCode = Country.findByPhoneNumber(phoneNumber);
+            Optional<Country> countryOptional = Country.findByPhoneNumber(phoneNumber);
+            if (countryOptional.isPresent()) {
+                countryCode = countryOptional.get().getIsoTwoLetterCountryCode();
+            }
             isCountryCodeNull = true;
         }
-        PhoneNumberUtil.PhoneNumberType type = PhoneNumberUtil.PhoneNumberType.UNKNOWN;
+        PhoneNumberType type = PhoneNumberType.UNKNOWN;
 
         try {
             Phonenumber.PhoneNumber parsedNumber = phoneNumberUtil.parseAndKeepRawInput(phoneNumber, countryCode);
             String formattedNumber = phoneNumberUtil.format(parsedNumber, PhoneNumberUtil.PhoneNumberFormat.E164);
             String regionCode = phoneNumberUtil.getRegionCodeForNumber(parsedNumber);
-            type = phoneNumberUtil.getNumberType(parsedNumber);
+            type = PhoneNumberType.fromPhoneNumberUtilType(phoneNumberUtil.getNumberType(parsedNumber));
             boolean isValid = phoneNumberUtil.isValidNumberForRegion(parsedNumber, countryCode);
 
             PhoneNumberParseErrorType invalidReason = isValid
@@ -34,25 +41,39 @@ public class PhoneNumberParser {
                     ? PhoneNumberParseErrorType.fromValidationResult(phoneNumberUtil.isPossibleNumberWithReason(parsedNumber))
                     : PhoneNumberParseErrorType.INCOMPATIBLE_WITH_COUNTRY_CODE);
 
-            return new PhoneNumberInfo(formattedNumber, countryCode, type, isValid, invalidReason);
+            return PhoneNumberInfo.builder()
+                    .value(formattedNumber)
+                    .isoTwoLetterCountryCode(countryCode)
+                    .type(type)
+                    .valid(isValid)
+                    .invalidReason(invalidReason)
+                    .build();
         } catch (NumberParseException e) {
-            String normalizedNumber = PhoneNumberUtils.normalizePhoneNumber(phoneNumber);
+            String normalizedNumber = PhoneNumberNormalizer.normalizePhoneNumber(phoneNumber);
             if (StringUtils.hasText(normalizedNumber)) {
                 normalizedNumber = "+" + normalizedNumber;
             }
             PhoneNumberParseErrorType invalidReason = isCountryCodeNull && e.getErrorType().equals(NumberParseException.ErrorType.INVALID_COUNTRY_CODE)
                     ? PhoneNumberParseErrorType.ISO_TWO_LETTER_COUNTRY_CODE_IS_REQUIRED
                     : PhoneNumberParseErrorType.fromNumberParseException(e.getErrorType());
-            return new PhoneNumberInfo(normalizedNumber, countryCode, type, false, invalidReason);
+
+            return PhoneNumberInfo.builder()
+                    .value(normalizedNumber)
+                    .isoTwoLetterCountryCode(countryCode)
+                    .type(type)
+                    .valid(false)
+                    .invalidReason(invalidReason)
+                    .build();
         }
     }
 
     @Getter
     @AllArgsConstructor
+    @Builder
     public static class PhoneNumberInfo {
         private final String value;
         private final String isoTwoLetterCountryCode;
-        private final PhoneNumberUtil.PhoneNumberType type;
+        private final PhoneNumberType type;
         private final boolean valid;
         private final PhoneNumberParseErrorType invalidReason;
     }

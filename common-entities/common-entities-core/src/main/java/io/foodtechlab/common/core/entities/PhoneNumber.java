@@ -1,7 +1,7 @@
 package io.foodtechlab.common.core.entities;
 
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import io.foodtechlab.common.core.types.PhoneNumberParseErrorType;
+import io.foodtechlab.common.core.types.PhoneNumberType;
 import io.foodtechlab.common.core.utils.PhoneNumberParser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +25,7 @@ public class PhoneNumber {
     /**
      * Тип телефонного номера (мобильный, стационарный и т.д.).
      */
-    protected PhoneNumberUtil.PhoneNumberType type;
+    protected PhoneNumberType type;
     /**
      * Флаг, указывающий, является ли телефонный номер действительным (прошедшим валидацию на соответствие номера и страны)
      */

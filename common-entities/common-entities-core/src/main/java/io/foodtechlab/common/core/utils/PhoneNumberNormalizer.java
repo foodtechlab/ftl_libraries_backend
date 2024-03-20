@@ -3,7 +3,7 @@ package io.foodtechlab.common.core.utils;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class PhoneNumberUtils {
+public class PhoneNumberNormalizer {
     /**
      * Метод для нормализации телефонного номера (удаление всех нецифровых символов).
      *
