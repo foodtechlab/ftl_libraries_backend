@@ -1,84 +1,70 @@
 package io.foodtechlab.common.core.entities;
 
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
+import io.foodtechlab.common.core.types.PhoneNumberParseErrorType;
+import io.foodtechlab.common.core.types.PhoneNumberType;
+import io.foodtechlab.common.core.utils.PhoneNumberParser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
-
+/**
+ * Класс, представляющий телефонный номер и предоставляющий методы для работы с ним.
+ */
 @NoArgsConstructor
 @Getter
 public class PhoneNumber {
-    protected String phoneNumber;
-    protected CountryCode countryCode;
-    // PhoneNumberFormat.INTERNATIONAL
-    protected String phoneNumberInternational;
-    // PhoneNumberFormat.E164
-    protected String phoneNumberE164;
-    protected Boolean valid;
+    /**
+     * Значение телефонного номера в формате E.164.
+     */
+    protected String value;
+    /**
+     * ISO 3166-1 alpha-2 код страны телефонного номера.
+     */
+    protected String isoTwoLetterCountryCode;
+    /**
+     * Тип телефонного номера (мобильный, стационарный и т.д.).
+     */
+    protected PhoneNumberType type;
+    /**
+     * Флаг, указывающий, является ли телефонный номер действительным (прошедшим валидацию на соответствие номера и страны)
+     */
+    protected boolean valid;
+    /**
+     * Содержит информацию о том, почему номер не прошел валидацию.
+     * Если номер действителен, то это поле равно null.
+     */
+    protected PhoneNumberParseErrorType invalidReason;
 
-
-    public static String format(String value) {
-        if (value == null) return "";
-
-        String formatted = value.replaceAll("[^0-9]", "");
-        if (formatted.startsWith("89")) formatted = "7" + formatted.substring(1);
-
-        return formatted;
+    public PhoneNumber(String phoneNumber, String isoTwoLetterCountryCode) {
+        setPhoneNumber(phoneNumber, isoTwoLetterCountryCode);
     }
 
-    public static boolean isValid(String challenge) {
-        try {
-            String formattedValue = format(challenge);
-            CountryCode countryCode = CountryCode.parse(formattedValue);
-
-            PhoneNumberUtil pnu = PhoneNumberUtil.getInstance();
-            Phonenumber.PhoneNumber pn = pnu.parse(formattedValue, countryCode.countryCode());
-            pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
-            pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.E164);
-            return true;
-        } catch (Exception _ignore) {
-            return false;
-        }
+    /**
+     * Создание нового объекта PhoneNumber.
+     *
+     * @param phoneNumber             телефонный номер в строковом формате
+     * @param isoTwoLetterCountryCode ISO 3166-1 alpha-2 код страны телефонного номера
+     *
+     * @return новый объект PhoneNumber
+     */
+    public static PhoneNumber createPhoneNumber(String phoneNumber, String isoTwoLetterCountryCode) {
+        return new PhoneNumber(phoneNumber, isoTwoLetterCountryCode);
     }
 
-    public static PhoneNumber of(String value) throws NumberParseException {
-        if (value == null)
-            throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER, "PhoneNumber of exeption");
-
-        PhoneNumber phoneNumber = new PhoneNumber();
-        phoneNumber.setPhoneNumber(value);
-        if (phoneNumber.valid == false)
-            throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER, "PhoneNumber of exeption");
-
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        String formattedValue = format(phoneNumber);
-
-        this.phoneNumber = formattedValue;
-        try {
-            this.countryCode = CountryCode.parse(formattedValue);
-
-            PhoneNumberUtil pnu = PhoneNumberUtil.getInstance();
-            Phonenumber.PhoneNumber pn = pnu.parse(formattedValue, countryCode.countryCode());
-            this.phoneNumberInternational = pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
-            this.phoneNumberE164 = pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.E164);
-            this.valid = true;
-        } catch (Exception _ignore) {
-            this.valid = false;
-            this.phoneNumberInternational = null;
-            this.phoneNumberE164 = null;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return phoneNumber;
+    /**
+     * Устанавливает телефонный номер и ISO 3166-1 alpha-2 код страны.
+     *
+     * @param phoneNumber             телефонный номер в строковом формате
+     * @param isoTwoLetterCountryCode ISO 3166-1 alpha-2 код страны телефонного номера
+     */
+    private void setPhoneNumber(String phoneNumber, String isoTwoLetterCountryCode) {
+        PhoneNumberParser.PhoneNumberInfo phoneNumberInfo = PhoneNumberParser.parsePhoneNumber(phoneNumber, isoTwoLetterCountryCode);
+        this.value = phoneNumberInfo.getValue();
+        this.isoTwoLetterCountryCode = phoneNumberInfo.getIsoTwoLetterCountryCode();
+        this.type = phoneNumberInfo.getType();
+        this.valid = phoneNumberInfo.isValid();
+        this.invalidReason = phoneNumberInfo.getInvalidReason();
     }
 
     @Override
@@ -86,13 +72,14 @@ public class PhoneNumber {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhoneNumber that = (PhoneNumber) o;
-        return Objects.equals(phoneNumber, that.phoneNumber);
+        return valid == that.valid &&
+                Objects.equals(value, that.value) &&
+                Objects.equals(isoTwoLetterCountryCode, that.isoTwoLetterCountryCode) &&
+                Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(phoneNumber);
+        return Objects.hash(value, isoTwoLetterCountryCode, type, valid);
     }
-
-
 }
