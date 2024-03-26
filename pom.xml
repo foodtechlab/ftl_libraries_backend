@@ -87,16 +87,13 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.0.1-SNAPSHOT</revision>
+        <revision>4.0.1</revision>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <java>11</java>
-
-        <deploy.serverId>backend-libraries</deploy.serverId>
-        <deploy.nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</deploy.nexusUrl>
         <!--Build and Deploy-->
     </properties>
 
@@ -242,8 +239,8 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <serverId>${deploy.serverId}</serverId>
-                            <nexusUrl>${deploy.serverId}</nexusUrl>
+                            <serverId>backend-libraries</serverId>
+                            <nexusUrl>https://nexus.foodtech-lab.ru/repository/backend-libraries/</nexusUrl>
                             <skipStaging>true</skipStaging>
                         </configuration>
                     </plugin>
