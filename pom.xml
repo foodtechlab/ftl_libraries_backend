@@ -87,7 +87,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.0.1</revision>
+        <revision>4.1.0</revision>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -320,7 +320,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>io.foodtechlab</groupId>
                 <artifactId>tests-helper</artifactId>
