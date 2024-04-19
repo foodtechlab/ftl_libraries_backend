@@ -1,6 +1,5 @@
-package ru.foodtechlab.common.core.entities;
+package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.entities.DateTimeObject;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -1,10 +1,9 @@
-package ru.foodtechlab.common.core.inputValues;
+package io.foodtechlab.common.core.inputValues;
 
 import com.rcore.domain.commons.exception.DomainException;
 import com.rcore.domain.commons.exception.ValidationPayload;
 import io.foodtechlab.common.core.entities.exception.CommonErrorReason;
 import io.foodtechlab.common.core.entities.exception.Domain;
-import io.foodtechlab.common.core.inputValues.LocationInputValue;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
