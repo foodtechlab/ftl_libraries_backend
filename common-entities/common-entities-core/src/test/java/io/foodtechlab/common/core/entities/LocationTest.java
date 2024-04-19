@@ -1,4 +1,4 @@
-package ru.foodtechlab.common.core.entities;
+package io.foodtechlab.common.core.entities;
 
 import io.foodtechlab.common.core.entities.Location;
 import org.junit.jupiter.api.Test;
