@@ -1,6 +1,5 @@
 package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.entities.DateTimeObject;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Тестирование класса DateTimeObject на основе различных вариантов создания объекта.
  */
-public class DateTimeObjectTestTest {
+public class DateTimeObjectTest {
 
     /**
      * Проверяет корректность создания объекта DateTimeObject на основе Instant и ZoneId.

@@ -2,7 +2,6 @@ package io.foodtechlab.common.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.*;
@@ -12,52 +11,50 @@ import java.time.format.DateTimeFormatter;
  * Базовая сущность. Разделенные значения времени c возможностью индексации по отдельным значениям и агрегированию
  */
 @AllArgsConstructor
-@NoArgsConstructor
 @SuperBuilder
 @Getter
 public class TimeObject {
     /**
      * Часы
      */
-    Integer hour;
+    private final Integer hour;
 
     /**
      * Минуты
      */
-    Integer minute;
+    private final Integer minute;
 
     /**
      * Секунды
      */
-    Integer second;
+    private final Integer second;
 
     /**
      * Наносекунды
      */
-    Integer nano;
+    private final Integer nano;
 
     /**
      * Представление времени
      */
-    FormattedLocalTime formattedLocalDateTime;
+    private final FormattedLocalTime formattedLocalDateTime;
 
     @AllArgsConstructor
-    @NoArgsConstructor
     @SuperBuilder
     @Getter
     public static class FormattedLocalTime {
         /**
-         * Время по маске: HHMMSSMMM
+         * Время по маске: HHmmssSSS
          */
-        Long valueInLong;
+        private final Long valueInLong;
         /**
          * Время по маске: "HH:mm:ss.SSS"
          */
-        String valueInString;
+        private final String valueInString;
         /**
-         * Время в наносекундах c начала дня.
+         * Время в наносекундах от начала дня.
          */
-        Long valueInNanoOfDay;
+        private final Long valueInNanoOfDay;
     }
 
 
@@ -66,7 +63,7 @@ public class TimeObject {
         int minute = localTime.getMinute();
         int second = localTime.getSecond();
         int nano = localTime.getNano();
-        FormattedLocalTime formattedLocalTime = calculateFormattedLocalDateTime(localTime);
+        FormattedLocalTime formattedLocalTime = createFormattedLocalDateTime(localTime);
 
         return TimeObject.builder()
                 .hour(hour)
@@ -82,9 +79,9 @@ public class TimeObject {
         return TimeObject.of(localTime);
     }
 
-    private static FormattedLocalTime calculateFormattedLocalDateTime(LocalTime localTime) {
-        String valueInString = localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSSSSS"));
-        Long valueInLong = Long.parseLong(localTime.format(DateTimeFormatter.ofPattern("HHmmssSSSSSSSSS")));
+    private static FormattedLocalTime createFormattedLocalDateTime(LocalTime localTime) {
+        String valueInString = localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
+        Long valueInLong = Long.parseLong(localTime.format(DateTimeFormatter.ofPattern("HHmmssSSS")));
         Long valueInNanoOfDay = localTime.toNanoOfDay();
 
         return FormattedLocalTime.builder()

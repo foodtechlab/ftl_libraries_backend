@@ -23,8 +23,8 @@ public class TimeObjectTest {
         assertEquals(localTime.getNano(), timeObject.getNano());
 
         // Проверка форматированного времени
-        String formattedTime = String.format("%02d:%02d:%02d.%09d",
-                localTime.getHour(), localTime.getMinute(), localTime.getSecond(), localTime.getNano());
+        String formattedTime = String.format("%02d:%02d:%02d.%03d",
+                localTime.getHour(), localTime.getMinute(), localTime.getSecond(), localTime.getNano() / 1_000_000);
         assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
     }
 
@@ -41,8 +41,8 @@ public class TimeObjectTest {
         assertEquals(localTime.getNano(), timeObject.getNano());
 
         // Проверка форматированного времени
-        String formattedTime = String.format("%02d:%02d:%02d.%09d",
-                localTime.getHour(), localTime.getMinute(), localTime.getSecond(), localTime.getNano());
+        String formattedTime = String.format("%02d:%02d:%02d.%03d",
+                localTime.getHour(), localTime.getMinute(), localTime.getSecond(), localTime.getNano() / 1_000_000);
         assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
     }
 
@@ -108,7 +108,7 @@ public class TimeObjectTest {
         assertNotNull(timeObject);
 
         // Расчитываем ожидаемое значение valueInLong
-        String expectedValueInLongString = "123015500000000"; // Ожидаемое значение для 12:30:15.500000000
+        String expectedValueInLongString = "123015500"; // Ожидаемое значение для 12:30:15.500000000
         long expectedValueInLong = Long.parseLong(expectedValueInLongString);
 
         // Проверяем, что значение valueInLong соответствует ожидаемому
