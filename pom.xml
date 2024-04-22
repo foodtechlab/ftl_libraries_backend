@@ -87,7 +87,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.1.0</revision>
+        <revision>4.1.3</revision>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
