@@ -27,7 +27,7 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>ru.foodtechlab.lib</groupId>
+            <groupId>io.foodtechlab</groupId>
             <artifactId>auth-integration-restapi-feign-commons</artifactId>
         </dependency>
         <dependency>
