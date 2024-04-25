@@ -2,6 +2,7 @@ package io.foodtechlab.common.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.*;
@@ -13,48 +14,50 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 @SuperBuilder
 @Getter
+@NoArgsConstructor
 public class TimeObject {
     /**
      * Часы
      */
-    private final Integer hour;
+    private Integer hour;
 
     /**
      * Минуты
      */
-    private final Integer minute;
+    private Integer minute;
 
     /**
      * Секунды
      */
-    private final Integer second;
+    private Integer second;
 
     /**
      * Наносекунды
      */
-    private final Integer nano;
+    private Integer nano;
 
     /**
      * Представление времени
      */
-    private final FormattedLocalTime formattedLocalDateTime;
+    private FormattedLocalTime formattedLocalDateTime;
 
     @AllArgsConstructor
     @SuperBuilder
+    @NoArgsConstructor
     @Getter
     public static class FormattedLocalTime {
         /**
          * Время по маске: HHmmssSSS
          */
-        private final Long valueInLong;
+        private Long valueInLong;
         /**
          * Время по маске: "HH:mm:ss.SSS"
          */
-        private final String valueInString;
+        private String valueInString;
         /**
          * Время в наносекундах от начала дня.
          */
-        private final Long valueInNanoOfDay;
+        private Long valueInNanoOfDay;
     }
 
 
