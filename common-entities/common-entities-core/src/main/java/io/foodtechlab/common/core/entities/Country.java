@@ -1,6 +1,5 @@
 package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.utils.PhoneNumberNormalizer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -39,7 +38,7 @@ public enum Country {
     private final String name;
 
     public static Optional<Country> findByPhoneNumber(String phoneNumber) {
-        String normalizedPhoneNumber = PhoneNumberNormalizer.normalizePhoneNumber(phoneNumber);
+        String normalizedPhoneNumber = PhoneNumber.formatFullRuNumber(phoneNumber);
 
         for (Country currentCountry : Country.values()) {
             for (Integer countryCallingCode : currentCountry.phoneCodes) {
