@@ -6,6 +6,7 @@ import com.google.i18n.phonenumbers.Phonenumber;
 import io.foodtechlab.common.core.types.PhoneNumberParseErrorType;
 import io.foodtechlab.common.core.types.PhoneNumberType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.Objects;
@@ -15,6 +16,7 @@ import java.util.Optional;
  * Класс, представляющий телефонный номер и предоставляющий методы для работы с ним.
  */
 @Getter
+@NoArgsConstructor
 public class PhoneNumber {
     /**
      * Значение телефонного номера в формате E.164.
