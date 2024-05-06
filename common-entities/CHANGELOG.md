@@ -1,3 +1,37 @@
+## 4.1.4 (06.05.2024)
+
+----
+
+### Release Highlight
+
+- Добавлены исправления в PhoneNumber и TimeObject
+- В TimeObject переименовал класс и поле: FormattedLocalTime formattedLocalTime (было FormattedLocalDateTime formattedLocalDateTime)
+
+### Features
+
+- добавил метод `toString` для `PhoneNumber`: `"79023602131"`
+- добавил метод `toString` для `TimeObject`: `"14:00"` или `"14:00:30"` или `"14:00:30.999"`
+- добавил новый фабричный метод `TimeObject.parse(String text)`.
+  Он позволяет создать время из строки. Полезно для сериализаторов.
+- Добавил сериализатор и десериализатор TimeObject
+- Добавил `StringUtils` для работы со строкой. Содержит исправленный hasText.
+- Добавлены статические фабричные методы для создания объекта PhoneNumber (убрано создание через конструктор)
+
+### Fixes
+
+- для `TimeObject` исправил ошибки использования `.builder()`
+- Телефонные номера создаются без + в начале
+- `PhoneNumberNormalizer` помечен как deprecated
+- Его метод перенесен в `PhoneNumber.formatFullRuNumber`
+- Класс `PhoneNumberParser` удален
+- Исправления тестов
+- в TimeObject переименовал класс и поле: FormattedLocalTime formattedLocalTime (было FormattedLocalDateTime formattedLocalDateTime)
+
+### Docs
+
+- добавил документацию в тесты `TimeObjectTest`
+- добавил документацию `TimeObject`
+
 ## 4.1.2 (18.04.2024)
 
 ----
@@ -5,7 +39,7 @@
 ### Release Highlight
 
 - Добавлен новый объект `TimeObject` для работы со временем (Без учета зоны)
-- `TimeObject` имеет два статических вабричных метода `of` и `ofNanoOfDay`
+- `TimeObject` имеет два статических фабричных метода `of` и `ofNanoOfDay`
 - `of` принимает на вход `LocalTime`
 - `ofNanoOfDay` принимает на вход `Long` (значение в наносекундах)
 
@@ -15,34 +49,36 @@
 
 ### Docs
 
-
 ## 4.0.1 (26.03.2024)
 
 ----
 
 ### Release Highlight ###
-- Добавлены поля FormattedLocalDateTime и TimeZoneProperties в класс DateTimeObject для хранения дополнительной 
-  информации о времени и временных зонах. Написаны тесты в DateTimeObjectTest для проверки корректности создания 
+
+- Добавлены поля FormattedLocalDateTime и TimeZoneProperties в класс DateTimeObject для хранения дополнительной
+  информации о времени и временных зонах. Написаны тесты в DateTimeObjectTest для проверки корректности создания
   объекта DateTimeObject на основе различных вариантов времени и временных зон.
 - Изменен класс PhoneNumber:
-  - Удалены поля phoneNumber, countryCode, phoneNumberInternational, phoneNumberE164. 
-  - Добавлены поля value (значение телефонного номера в формате E.164), isoTwoLetterCountryCode
-   (ISO 3166-1 alpha-2 код страны), type (тип телефонного номера), valid (флаг, указывающий, является ли телефонный 
-   номер действительным и валидным для указанной страны, invalidReason(информация о том, почему номер не прошел валидацию)).
-  - Изменен конструктор класса и метод setPhoneNumber для установки телефонного номера и кода страны. 
-  - Добавлен метод parsePhoneNumber для парсинга и форматирования телефонного номера. 
-  - Удален метод format, так как он больше не используется.
+    - Удалены поля phoneNumber, countryCode, phoneNumberInternational, phoneNumberE164.
+    - Добавлены поля value (значение телефонного номера в формате E.164), isoTwoLetterCountryCode
+      (ISO 3166-1 alpha-2 код страны), type (тип телефонного номера), valid (флаг, указывающий, является ли телефонный
+      номер действительным и валидным для указанной страны, invalidReason(информация о том, почему номер не прошел
+      валидацию)).
+    - Изменен конструктор класса и метод setPhoneNumber для установки телефонного номера и кода страны.
+    - Добавлен метод parsePhoneNumber для парсинга и форматирования телефонного номера.
+    - Удален метод format, так как он больше не используется.
 - Изменен класс CountryCode:
-  - Переименован в Country
-  - Удалены поля prefix, prefixString, countryName, phoneMask, phoneLength. 
-  - Добавлены поля isoTwoLetterCountryCode (ISO 3166-1 alpha-2 код страны), phoneCodes (коды стран для телефонных номеров), 
-    phonePrefixes (префиксы номеров для страны). 
-  - Изменен метод parse на findByPhoneNumber для поиска кода страны по телефонному номеру. 
-  - Добавлен метод normalizePhoneNumber для нормализации телефонного номера. 
+    - Переименован в Country
+    - Удалены поля prefix, prefixString, countryName, phoneMask, phoneLength.
+    - Добавлены поля isoTwoLetterCountryCode (ISO 3166-1 alpha-2 код страны), phoneCodes (коды стран для телефонных
+      номеров),
+      phonePrefixes (префиксы номеров для страны).
+    - Изменен метод parse на findByPhoneNumber для поиска кода страны по телефонному номеру.
+    - Добавлен метод normalizePhoneNumber для нормализации телефонного номера.
 - Изменен класс PhoneNumberTest:
-  - Добавлены и изменены тесты для проверки различных сценариев работы с телефонными номерами, включая действительные 
-    и недействительные номера, номера без указания кода страны, номера с различным форматированием. 
-  - Добавлены тесты для проверки методов equals и hashCode.
+    - Добавлены и изменены тесты для проверки различных сценариев работы с телефонными номерами, включая действительные
+      и недействительные номера, номера без указания кода страны, номера с различным форматированием.
+    - Добавлены тесты для проверки методов equals и hashCode.
 
 ## 1.2 (10.11.2022)
 

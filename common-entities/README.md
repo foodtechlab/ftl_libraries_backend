@@ -207,12 +207,6 @@ public TopicCategoryRestoredEvent createEvent(TopicCategoryEntity entity){
 Это объект, который находится в модуле core. Он отвечает за развёрнутое представление даты в БД. При этом сам объект
 никак не зависит от баз данных и его можно использовать в любом модуле
 
-## DateTimeObject ##
-
-Это объект, который находится в модуле core. Он отвечает за представление времени без учета временной зоны. Так же
-хранит в себе значение времени в наносекундах от начала дня 00:00. На вход принимает один из двух параметров.
-LocalTime или Long(значение в наносекундах от начала дня)
-
 ### Создание ###
 
 Для создания необходимо указывать временную зону даты и времени. Это необходимо для того чтобы мы знали не только
@@ -246,6 +240,71 @@ Optional<Criteria> criteria=DateTimeObjectCriteria
 
 В ответе возвращается опциональный объект `Optional`. При это пустой вернётся в том случае если один из аргументов
 даты `null`.
+
+
+
+## TimeObject ##
+
+Для работы со временем мы разработали класс `TimeObject`. 
+
+Основная его задача хранить в себе локальное время без учёта временной зоны. 
+Класс содержит подробную разбивку по полям: часы, минуты, секунды и наносекунды. 
+Такая разбивка позволяет строить разнообразные критерии.
+
+Так же объект хранит: время от начала дня в наносекундах, полное форматирование и специальный лонг формат. 
+Это располагается во внутреннем классе `FormattedLocalTime`
+
+Объект находится в модуле core
+
+### Создание `TimeObject` ###
+`TimeObject` содержит несколько фабричных методов.
+
+- `TimeObject.parse(String text)` позволяет создать объект из строки, например: `14:00`.
+   Строка должна содержать корректное время и соответствовать формату ISO Local Time. 
+   Допустимые варианты: `14:00`, `14:30:30`, `14:30:30.0001`
+- `TimeObject.of(LocalTime localTime)` позволяет создать объект из объекта `LocalTime`.
+   Поле обязательно и null значения не принимает.
+- `TimeObject.ofNanosOfDay(Long nano)` позволяет создать объект из наносекунд от начала дня. Переданое
+   значение должно быть больше 0.
+- `TimeObject.builder()` позволяет создать объект используя паттерн строитель.
+  Допустимы значения `hour()`, `minute()`, `second()`, `nanoOfSecond()`. Все значения типа `Integer`. 
+  Значения для `hour()` и `minute()` обязательны.
+
+
+### Сериализаторы и десериализаторы для `TimeObject` ###
+
+Мы можем использовать TimeObject для классов типа Request и Response. При этом
+в json это будет представлено значение в виде строки, например `"14:30"`.
+Для того чтобы Spring знал как правильно сериализировать и десериализировать значения,
+нужно добавить в конфигурацию следующие строки.
+
+В классе `SpringWebMvcConfig` требуется добавить или найти и исправить на следующий элемент конфигурации.
+
+```java
+@Bean
+public ObjectMapper objectMapper() {
+    Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
+    builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
+    builder.serializationInclusion(JsonInclude.Include.NON_NULL);
+    builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
+
+    ObjectMapper mapper = builder.build();
+
+    SimpleModule module = new SimpleModule();
+    module.addSerializer(TimeObject.class, new TimeObjectSerializer());
+    module.addDeserializer(TimeObject.class, new TimeObjectDeserializer());
+
+    mapper.registerModule(module);
+
+    return mapper;
+}
+```
+К `ObjectMapper` мы добавляем `TimeObjectSerializer` и `TimeObjectDeserializer`.
+
+На вход допустимы строки формата: `14:30`, `14:30:30`, `14:30:30.999`.
+Из TimeObject будут получены соответсвующее значения. Если секунды и наносекунды ровны 0, они
+игнорируются.
+
 
 ## Правила контрибуции ##
 
