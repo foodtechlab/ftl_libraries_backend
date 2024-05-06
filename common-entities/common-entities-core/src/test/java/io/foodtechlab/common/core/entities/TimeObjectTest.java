@@ -37,8 +37,8 @@ public class TimeObjectTest {
 
         // Проверка форматированного времени
         String formattedTime = String.format("%1$tH:%1$tM:%1$tS.%1$tL", localTime);
-        assertNotNull(timeObject.getFormattedLocalDateTime());
-        assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
+        assertNotNull(timeObject.getFormattedLocalTime());
+        assertEquals(formattedTime, timeObject.getFormattedLocalTime().getValueInString());
     }
 
     /**
@@ -77,8 +77,8 @@ public class TimeObjectTest {
 
         // Проверка форматированного времени
         String formattedTime = String.format("%1$tH:%1$tM:%1$tS.%1$tL", localTime);
-        assertNotNull(timeObject.getFormattedLocalDateTime());
-        assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
+        assertNotNull(timeObject.getFormattedLocalTime());
+        assertEquals(formattedTime, timeObject.getFormattedLocalTime().getValueInString());
     }
 
     /**
@@ -238,8 +238,8 @@ public class TimeObjectTest {
 
         // Проверка форматированного времени
         String formattedTime = String.format("%1$tH:%1$tM:%1$tS.%1$tL", localTime);
-        assertNotNull(timeObject.getFormattedLocalDateTime());
-        assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
+        assertNotNull(timeObject.getFormattedLocalTime());
+        assertEquals(formattedTime, timeObject.getFormattedLocalTime().getValueInString());
     }
 
     /**
@@ -344,8 +344,8 @@ public class TimeObjectTest {
 
         // Проверка форматированного времени
         String formattedTime = String.format("%1$tH:%1$tM:%1$tS.%1$tL", localTime);
-        assertNotNull(timeObject.getFormattedLocalDateTime());
-        assertEquals(formattedTime, timeObject.getFormattedLocalDateTime().getValueInString());
+        assertNotNull(timeObject.getFormattedLocalTime());
+        assertEquals(formattedTime, timeObject.getFormattedLocalTime().getValueInString());
     }
 
     /**
@@ -432,6 +432,6 @@ public class TimeObjectTest {
         long expectedValueInLong = Long.parseLong(expectedValueInLongString);
 
         // Проверяем, что значение valueInLong соответствует ожидаемому
-        assertEquals(expectedValueInLong, timeObject.getFormattedLocalDateTime().getValueInLong());
+        assertEquals(expectedValueInLong, timeObject.getFormattedLocalTime().getValueInLong());
     }
 }

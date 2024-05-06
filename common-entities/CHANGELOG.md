@@ -1,10 +1,11 @@
-## 4.1.4 (03.05.2024)
+## 4.1.4 (06.05.2024)
 
 ----
 
 ### Release Highlight
 
 - Добавлены исправления в PhoneNumber и TimeObject
+- В TimeObject переименовал класс и поле: FormattedLocalTime formattedLocalTime (было FormattedLocalDateTime formattedLocalDateTime)
 
 ### Features
 
@@ -24,6 +25,7 @@
 - Его метод перенесен в `PhoneNumber.formatFullRuNumber`
 - Класс `PhoneNumberParser` удален
 - Исправления тестов
+- в TimeObject переименовал класс и поле: FormattedLocalTime formattedLocalTime (было FormattedLocalDateTime formattedLocalDateTime)
 
 ### Docs
 

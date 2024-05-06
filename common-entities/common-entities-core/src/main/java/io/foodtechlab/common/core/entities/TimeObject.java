@@ -14,8 +14,7 @@ import java.time.format.DateTimeParseException;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-@Builder(
-        access = AccessLevel.PRIVATE,
+@Builder(access = AccessLevel.PRIVATE,
         builderMethodName = "innerBuilder",
         builderClassName = "TimeObjectInnerBuilder")
 public class TimeObject {
@@ -23,34 +22,29 @@ public class TimeObject {
      * Часы
      */
     private Integer hour;
-
     /**
      * Минуты
      */
     private Integer minute;
-
     /**
      * Секунды
      */
     private Integer second;
-
     /**
      * Наносекунды
      */
     private Integer nano;
-
     /**
      * Представление времени
      */
-    private FormattedLocalTime formattedLocalDateTime;
+    private FormattedLocalTime formattedLocalTime;
 
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
-    @Builder(
-            access = AccessLevel.PRIVATE,
+    @Builder(access = AccessLevel.PRIVATE,
             builderMethodName = "innerBuilder",
-            builderClassName = "FormattedLocalTimeInnerBuilder")
+            builderClassName = "FormattedTimeInnerBuilder")
     public static class FormattedLocalTime {
         /**
          * Время по маске: HHmmssSSS
@@ -88,10 +82,10 @@ public class TimeObject {
      * Защищённый статический фабричный метод, который служит основой для билдера.
      * В нём происходят основные валидации билдера, а так же инициализация всех полей.
      *
-     * @param hour   час, принимает значение от 0 до 23
-     * @param minute минута, принимает значение от 0 до 59
-     * @param second секунда, принимает значение от 0 до 59
-     * @param nanoOfSecond   наносекунда, принимает значение 999,999,999
+     * @param hour         час, принимает значение от 0 до 23
+     * @param minute       минута, принимает значение от 0 до 59
+     * @param second       секунда, принимает значение от 0 до 59
+     * @param nanoOfSecond наносекунда, принимает значение 999,999,999
      * @return экземпляр {@link TimeObject}
      * @throws NullPointerException если {@code hour} и {@code minute} будут переданы как null
      * @throws DateTimeException    если параметры не будет соответствовать своим цифровым диапазонам
@@ -118,14 +112,14 @@ public class TimeObject {
         int minute = localTime.getMinute();
         int second = localTime.getSecond();
         int nano = localTime.getNano();
-        FormattedLocalTime formattedLocalTime = createFormattedLocalDateTime(localTime);
+        FormattedLocalTime formatted = buildFormattedTime(localTime);
 
         return TimeObject.innerBuilder()
                 .hour(hour)
                 .minute(minute)
                 .second(second)
                 .nano(nano)
-                .formattedLocalDateTime(formattedLocalTime)
+                .formattedLocalTime(formatted)
                 .build();
     }
 
@@ -149,7 +143,7 @@ public class TimeObject {
      * @param localTime локальное время
      * @return объект с отформатированным локальным временем
      */
-    private static FormattedLocalTime createFormattedLocalDateTime(LocalTime localTime) {
+    private static FormattedLocalTime buildFormattedTime(LocalTime localTime) {
         String valueInString = localTime.format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
         Long valueInLong = Long.parseLong(localTime.format(DateTimeFormatter.ofPattern("HHmmssSSS")));
         Long valueInNanoOfDay = localTime.toNanoOfDay();
