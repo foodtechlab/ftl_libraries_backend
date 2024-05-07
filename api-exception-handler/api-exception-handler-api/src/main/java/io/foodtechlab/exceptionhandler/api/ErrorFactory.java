@@ -8,6 +8,7 @@ import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Component;
 import io.foodtechlab.exceptionhandler.core.Error;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -97,5 +98,16 @@ public class ErrorFactory {
                 i18NHelper.getProperty(GlobalDomain.SERVER + "." + GlobalReason.UNKNOWN_REASON + ".message", locale),
                 ex
         );
+    }
+
+    public Error buildInvalidEnumError(String enumName, String invalidValue, List<String> validValues, Locale locale) {
+        String domain = "SYSTEM";
+        String details = String.format("The value '%s' is not a valid value for enum '%s'. Valid values are: %s", invalidValue, enumName, String.join(", ", validValues));
+        String reason = "INVALID_ENUM_VALUE";
+        String value = "";
+        value = getLocalizedFiledOrValue(domain, enumName, locale);
+        var title = i18NHelper.getProperty(domain + "." + reason + ".title", locale);
+        var message = i18NHelper.getProperty(domain + "." + reason + ".message", locale).replace("{value}", value);
+        return Error.of(title, message, domain, reason, details);
     }
 }

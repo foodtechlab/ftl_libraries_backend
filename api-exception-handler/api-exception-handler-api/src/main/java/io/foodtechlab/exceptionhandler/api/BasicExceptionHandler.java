@@ -1,12 +1,15 @@
 package io.foodtechlab.exceptionhandler.api;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.rcore.domain.commons.exception.*;
 import com.rcore.domain.security.exceptions.CredentialPermissionInsufficientException;
 import com.rcore.rest.api.commons.exception.HttpCommunicationException;
 import io.foodtechlab.exceptionhandler.core.ErrorApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,8 +17,8 @@ import io.foodtechlab.exceptionhandler.core.Error;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.UndeclaredThrowableException;
-import java.util.Collections;
-import java.util.Locale;
+import java.time.Instant;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -175,6 +178,47 @@ public class BasicExceptionHandler {
         e.printStackTrace();
         return ResponseEntity.status(errorApiResponse.getStatus())
                 .body(errorApiResponse);
+    }
+
+    @ExceptionHandler({HttpMessageNotReadableException.class})
+    public ResponseEntity<ErrorApiResponse<Error>> handleHttpMessageNotReadable(HttpMessageNotReadableException e, HttpServletRequest request, Locale locale) {
+        Throwable rootCause = e.getRootCause();
+        if (rootCause instanceof InvalidFormatException) {
+            InvalidFormatException invalidFormatException = (InvalidFormatException) rootCause;
+            String enumName = invalidFormatException.getTargetType().getSimpleName();
+            String invalidValue = invalidFormatException.getValue().toString();
+            List<String> validValues = getValidEnumValues(invalidFormatException.getTargetType());
+
+            Error error = errorFactory.buildInvalidEnumError(enumName, invalidValue, validValues, locale);
+
+            ErrorApiResponse<Error> errorApiResponse = ErrorApiResponse.badRequest(
+                    Collections.singletonList(error),
+                    request.getRequestURI(),
+                    errorFactory.getTraceId()
+            );
+            errorApiResponse.setTimestamp(Instant.now());
+
+            return ResponseEntity.status(errorApiResponse.getStatus())
+                    .body(errorApiResponse);
+        }
+
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ErrorApiResponse.internalServerError(
+                        Collections.singletonList(errorFactory.buildUnknownException(e, locale)),
+                        request.getRequestURI(),
+                        errorFactory.getTraceId()
+                ));
+    }
+
+    private List<String> getValidEnumValues(Class<?> enumClass) {
+        if (!enumClass.isEnum()) {
+            throw new IllegalArgumentException("The provided class is not an enum");
+        }
+
+        return Arrays.stream(enumClass.getEnumConstants())
+                .map(Object::toString)
+                .collect(Collectors.toList());
     }
 
 }
