@@ -1,14 +1,14 @@
 package io.foodtechlab.microservice.integration.feign.config;
 
 
-import io.foodtechlab.exceptionhandler.core.Error;
-import io.foodtechlab.exceptionhandler.core.ErrorApiResponse;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rcore.rest.api.commons.exception.HttpCommunicationException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
+import io.foodtechlab.exceptionhandler.core.Error;
+import io.foodtechlab.exceptionhandler.core.ErrorApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.commons.io.IOUtils;
