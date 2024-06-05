@@ -2,8 +2,8 @@ package io.foodtechlab.common.core.inputValues;
 
 import com.rcore.domain.commons.exception.DomainException;
 import com.rcore.domain.commons.exception.ValidationPayload;
+import io.foodtechlab.common.core.entities.BaseDomain;
 import io.foodtechlab.common.core.entities.exception.CommonErrorReason;
-import io.foodtechlab.common.core.entities.exception.Domain;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
@@ -82,7 +82,7 @@ public class LocationInputValueTest {
         double longitude = 181;
         double latitude = 45.2456;
 
-        String domain = Domain.LOCATION.name();
+        String domain = BaseDomain.LOCATION;
         String reason = CommonErrorReason.LONGITUDE_REACH_MAX.name();
 
         LocationInputValue location = LocationInputValue.of(latitude, longitude);
@@ -100,7 +100,7 @@ public class LocationInputValueTest {
         double longitude = 48.261651;
         double latitude = 91;
 
-        String domain = Domain.LOCATION.name();
+        String domain = BaseDomain.LOCATION;
         String reason = CommonErrorReason.LATITUDE_REACH_MAX.name();
 
         LocationInputValue location = LocationInputValue.of(latitude, longitude);
@@ -118,7 +118,7 @@ public class LocationInputValueTest {
         double longitude = -181;
         double latitude = 45.2456;
 
-        String domain = Domain.LOCATION.name();
+        String domain = BaseDomain.LOCATION;
         String reason = CommonErrorReason.LONGITUDE_REACH_MIN.name();
 
         LocationInputValue location = LocationInputValue.of(latitude, longitude);
@@ -136,7 +136,7 @@ public class LocationInputValueTest {
         double longitude = 48.261651;
         double latitude = -91;
 
-        String domain = Domain.LOCATION.name();
+        String domain = BaseDomain.LOCATION;
         String reason = CommonErrorReason.LATITUDE_REACH_MIN.name();
 
         LocationInputValue location = LocationInputValue.of(latitude, longitude);

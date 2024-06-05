@@ -1,6 +1,5 @@
 package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.entities.SortedData;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
