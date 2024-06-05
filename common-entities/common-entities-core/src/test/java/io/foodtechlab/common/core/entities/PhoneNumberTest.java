@@ -51,10 +51,10 @@ public class PhoneNumberTest {
      */
     @ParameterizedTest
     @MethodSource("validPhoneNumbersWithoutCountryCode")
-    void testValidPhoneNumbersWithoutCountryCode(String phoneNumber, String isoTwoLetterCountryCode) {
+    void testValidPhoneNumbersWithoutCountryCode(String phoneNumber, String isoTwoLetterCountryCode, String expectedIsoTwoLetterCountryCode) {
         PhoneNumber phone = createPhoneNumber(phoneNumber, isoTwoLetterCountryCode);
         Assertions.assertTrue(phone.isValid());
-        Assertions.assertEquals("RU", phone.getIsoTwoLetterCountryCode());
+        Assertions.assertEquals(expectedIsoTwoLetterCountryCode, phone.getIsoTwoLetterCountryCode());
     }
 
     @ParameterizedTest
@@ -190,18 +190,24 @@ public class PhoneNumberTest {
 
     private static Stream<Arguments> validPhoneNumbersWithoutCountryCode() {
         return Stream.of(
-                Arguments.of("+79023602131", null),
-                Arguments.of("79023602131", null),
-                Arguments.of("89023602131", null),
+                Arguments.of("+79023602131", null, "RU"),
+                Arguments.of("79023602131", null, "RU"),
+                Arguments.of("89023602131", null, "RU"),
 
-                Arguments.of("+7 902 360-21-31", null),
-                Arguments.of("7 (9023) 60-21-31", null),
-                Arguments.of("8 902 (360)-21-31", null),
+                Arguments.of("+7 902 360-21-31", null, "RU"),
+                Arguments.of("7 (9023) 60-21-31", null, "RU"),
+                Arguments.of("8 902 (360)-21-31", null, "RU"),
 
-                Arguments.of("+7 902 360 21 31", null),
-                Arguments.of("7 902 360 21 31", null),
-                Arguments.of("8 902 36021 31", null),
-                Arguments.of("8 902 36021 31", "")
+                Arguments.of("+7 902 360 21 31", null, "RU"),
+                Arguments.of("7 902 360 21 31", null, "RU"),
+                Arguments.of("8 902 36021 31", null, "RU"),
+                Arguments.of("8 902 36021 31", "", "RU"),
+
+                Arguments.of("+971564694295", null, "AE"),
+                Arguments.of("971564694295", "", "AE"),
+
+                Arguments.of("+7 (705) 123-45-67", "", "KZ"),
+                Arguments.of("77051234567", "", "KZ")
         );
     }
 

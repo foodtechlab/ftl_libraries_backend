@@ -45,6 +45,9 @@ public enum Country {
                 String codeAsString = countryCallingCode.toString();
                 if (normalizedPhoneNumber.startsWith(codeAsString)) {
                     String numberWithoutCode = normalizedPhoneNumber.substring(codeAsString.length());
+                    if (currentCountry.phonePrefixes.isEmpty()) {
+                        return Optional.of(currentCountry);
+                    }
                     for (String phonePrefix : currentCountry.phonePrefixes) {
                         if (numberWithoutCode.startsWith(phonePrefix)) {
                             return Optional.of(currentCountry);
