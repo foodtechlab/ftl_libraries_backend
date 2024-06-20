@@ -1,9 +1,7 @@
 package io.foodtechlab.common.core.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -13,12 +11,9 @@ import java.util.Date;
 /**
  * Базовая сущность. Разделенные значения времени c возможностью индексации по отдельным значениям и агрегированию
  */
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Getter
 public class DateTimeObject {
-
     /**
      * Год
      */
@@ -79,8 +74,41 @@ public class DateTimeObject {
      */
     TimeZoneProperties timeZoneProperties;
 
-    @AllArgsConstructor
-    @NoArgsConstructor
+    /**
+     * Константа год эпохи, 1970-01-01T00:00:00. В зоне UTC.
+     */
+    public static final DateTimeObject EPOCH = DateTimeObject.of(Instant.EPOCH, ZoneId.of("UTC"));
+
+    /**
+     * Текущая дата и время в часовом поясе UTC
+     *
+     * @return текущая дата и время
+     */
+    public static DateTimeObject now() {
+        return DateTimeObject.of(Instant.now(), ZoneId.of("UTC"));
+    }
+
+    /**
+     * Текущая дата и время в зависимости от переданного часового пояса
+     *
+     * @param zoneId часовой пояс
+     * @return текущая дата и время
+     */
+    public static DateTimeObject now(ZoneId zoneId) {
+        return DateTimeObject.of(Instant.now(), zoneId);
+    }
+
+    /**
+     * Год эпохи, 1970-01-01T00:00:00 в зависимости от переданного часового пояса
+     *
+     * @param zoneId часовой пояс
+     * @return текущая дата и время
+     */
+    public static DateTimeObject epoch(ZoneId zoneId) {
+        return DateTimeObject.of(Instant.EPOCH, zoneId);
+    }
+
+
     @Builder
     @Getter
     public static class FormattedLocalDateTime {
@@ -94,10 +122,37 @@ public class DateTimeObject {
          * Формируется по маске: "yyyy-MM-dd'T'HH:mm:ss.SSS"
          */
         String valueInString;
+
+        /**
+         * Конструктор для базы данных.
+         * <p>
+         * Не использовать в разработке.
+         * Данные должны заполнятся автоматически при создании {@link DateTimeObject}.
+         *
+         * @deprecated создаёт объект без данных, что очень плохо.
+         * Чтобы создать пустой объект, воспользуйтесь методами {@link DateTimeObject#now}
+         * или {@link DateTimeObject#epoch(ZoneId)}.
+         */
+        @Deprecated(since = "4.1.7")
+        public FormattedLocalDateTime() {
+        }
+
+        /**
+         * Конструктор для базы данных.
+         * <p>
+         * Не использовать в разработке.
+         * Данные должны заполнятся автоматически при создании {@link DateTimeObject}.
+         *
+         * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо.
+         * Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
+         */
+        @Deprecated(since = "4.1.7")
+        public FormattedLocalDateTime(String valueInString, Long valueInLong) {
+            this.valueInString = valueInString;
+            this.valueInLong = valueInLong;
+        }
     }
 
-    @AllArgsConstructor
-    @NoArgsConstructor
     @Builder
     @Getter
     public static class TimeZoneProperties {
@@ -110,8 +165,70 @@ public class DateTimeObject {
          * Флаг, указывающий на активность летнего смещения часового пояса для данной временной зоны в момент времени отраженного в исходном объекте
          */
         Boolean isSummerTimeOffset;
+
+        /**
+         * Конструктор для базы данных.
+         * <p>
+         * Не использовать в разработке.
+         * Данные должны заполнятся автоматически при создании {@link DateTimeObject}.
+         *
+         * @deprecated создаёт объект без данных, что очень плохо.
+         * Чтобы создать пустой объект, воспользуйтесь методами {@link DateTimeObject#now}
+         * или {@link DateTimeObject#epoch(ZoneId)}.
+         */
+        @Deprecated(since = "4.1.7")
+        public TimeZoneProperties() {
+        }
+
+        /**
+         * Конструктор для базы данных.
+         * <p>
+         * Не использовать в разработке.
+         * Данные должны заполнятся автоматически при создании {@link DateTimeObject}.
+         *
+         * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо.
+         * Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
+         */
+        @Deprecated(since = "4.1.7")
+        public TimeZoneProperties(String offsetFromUTC, Boolean isSummerTimeOffset) {
+            this.offsetFromUTC = offsetFromUTC;
+            this.isSummerTimeOffset = isSummerTimeOffset;
+        }
     }
 
+    /**
+     * Конструктор для базы данных.
+     * <p>
+     * Не использовать в разработке.
+     *
+     * @deprecated создаёт объект без данных, что очень плохо. Чтобы создать пустой объект, воспользуйтесь методами {@link DateTimeObject#now} или {@link DateTimeObject#epoch(ZoneId)}.
+     */
+    @Deprecated(since = "4.1.7")
+    public DateTimeObject() {
+    }
+
+    /**
+     * Конструктор для базы данных.
+     * <p>
+     * Не использовать в разработке.
+     *
+     * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо. Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
+     */
+    @Deprecated(since = "4.1.7")
+    public DateTimeObject(FormattedLocalDateTime formattedLocalDateTime, Integer year, Integer month, Integer day, Integer hour, Integer minute, Integer second, DayOfWeek dayOfWeek, Integer week, Instant instant, String timeZone, TimeZoneProperties timeZoneProperties) {
+        this.formattedLocalDateTime = formattedLocalDateTime;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+        this.dayOfWeek = dayOfWeek;
+        this.week = week;
+        this.instant = instant;
+        this.timeZone = timeZone;
+        this.timeZoneProperties = timeZoneProperties;
+    }
 
     public static DateTimeObject of(Instant instant, ZoneId zone) {
         int year = instant.atZone(zone).getYear();
