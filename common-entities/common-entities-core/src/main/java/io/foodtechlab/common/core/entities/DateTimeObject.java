@@ -11,7 +11,6 @@ import java.util.Date;
 /**
  * Базовая сущность. Разделенные значения времени c возможностью индексации по отдельным значениям и агрегированию
  */
-@Builder
 @Getter
 public class DateTimeObject {
     /**
@@ -109,7 +108,6 @@ public class DateTimeObject {
     }
 
 
-    @Builder
     @Getter
     public static class FormattedLocalDateTime {
         /**
@@ -146,6 +144,7 @@ public class DateTimeObject {
          * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо.
          * Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
          */
+        @Builder
         @Deprecated(since = "4.1.7")
         public FormattedLocalDateTime(String valueInString, Long valueInLong) {
             this.valueInString = valueInString;
@@ -153,7 +152,6 @@ public class DateTimeObject {
         }
     }
 
-    @Builder
     @Getter
     public static class TimeZoneProperties {
         /**
@@ -189,6 +187,7 @@ public class DateTimeObject {
          * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо.
          * Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
          */
+        @Builder
         @Deprecated(since = "4.1.7")
         public TimeZoneProperties(String offsetFromUTC, Boolean isSummerTimeOffset) {
             this.offsetFromUTC = offsetFromUTC;
@@ -214,6 +213,7 @@ public class DateTimeObject {
      *
      * @deprecated создаёт объект данными, но нет проверки на то что данные могут конфликтовать, что очень плохо. Чтобы создать объект, воспользуйтесь методами {@link DateTimeObject#of}.
      */
+    @Builder
     @Deprecated(since = "4.1.7")
     public DateTimeObject(FormattedLocalDateTime formattedLocalDateTime, Integer year, Integer month, Integer day, Integer hour, Integer minute, Integer second, DayOfWeek dayOfWeek, Integer week, Instant instant, String timeZone, TimeZoneProperties timeZoneProperties) {
         this.formattedLocalDateTime = formattedLocalDateTime;
