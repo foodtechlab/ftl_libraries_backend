@@ -42,7 +42,7 @@
 
 Сервис авторизации тоже перешёл на новую backend-libraries. 
 В новой версии сервиса авторизации, которая и поддерживает backend-libraries сменился `groupId`.
-Вместо `ru.foodtechlab.lib` нужно использовать `io.ffoodtechlab`.
+Вместо `ru.foodtechlab.lib` нужно использовать `io.foodtechlab`.
 
 Было
 
