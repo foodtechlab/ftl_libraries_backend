@@ -5,7 +5,9 @@
 Все пакеты переименованы из `ru.foodtechlab` в `io.foodtechlab`. Это же касается groupId maven.
 
 Было
+
 ```xml
+
 <dependency>
     <groupId>ru.foodtechlab.i18n</groupId>
     <artifactId>i18n</artifactId>
@@ -14,7 +16,9 @@
 ```
 
 Стало
+
 ```xml
+
 <dependency>
     <groupId>io.foodtechlab</groupId>
     <artifactId>i18n</artifactId>
@@ -24,13 +28,38 @@
 
 ## Spring Boot
 
-Так же не забудьте что раз пакет в приложении поменялись то нужно будет дополнительно настроить 
+Так же не забудьте что раз пакет в приложении поменялись то нужно будет дополнительно настроить
 сканирование пакетов.
+
 ```java
 @SpringBootApplication(
         scanBasePackages = {"com.rcore", "ru.foodtechlab", "io.foodtechlab"},
         exclude = {EmbeddedMongoAutoConfiguration.class}
 )
+```
+
+## Auth-lib
+
+Сервис авторизации тоже перешёл на новую backend-libraries. 
+В новой версии сервиса авторизации, которая и поддерживает backend-libraries сменился `groupId`.
+Вместо `ru.foodtechlab.lib` нужно использовать `io.ffoodtechlab`.
+
+Было
+
+```xml
+<dependency>
+    <groupId>ru.foodtechlab.lib</groupId>
+    <artifactId>auth-integration-restapi-feign-authorization</artifactId>
+</dependency>
+```
+
+Стало
+
+```xml
+ <dependency>
+    <groupId>io.foodtechlab</groupId>
+    <artifactId>auth-integration-restapi-feign-authorization</artifactId>
+</dependency>
 ```
 
 ## Версия
@@ -43,13 +72,13 @@
 
 ### api-exception-handler-api
 
-|          | Предыдущее                 | Новое                        |
-|----------|----------------------------|------------------------------|
-| Название | ftl-api-error-handling-lib | api-exception-handler        |
-| GroupId  | ru.foodtechlab.aeh         | io.foodtechlab               |
-| Модули   | core                       | api-exception-handler-core   |
-|          | spring-api-error-handling  | api-exception-handler-api    |
-| Пакет    | ru.foodtechlab.aeh         | io.foodtechlab.exceptionable |
+|          | Предыдущее                 | Новое                           |
+|----------|----------------------------|---------------------------------|
+| Название | ftl-api-error-handling-lib | api-exception-handler           |
+| GroupId  | ru.foodtechlab.aeh         | io.foodtechlab                  |
+| Модули   | core                       | api-exception-handler-core      |
+|          | spring-api-error-handling  | api-exception-handler-api       |
+| Пакет    | ru.foodtechlab.aeh         | io.foodtechlab.exceptionhandler |
 
 ### common-entities
 
