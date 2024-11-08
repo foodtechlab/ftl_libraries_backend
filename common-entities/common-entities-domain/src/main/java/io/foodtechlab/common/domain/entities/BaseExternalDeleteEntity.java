@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * базовая сущность содержащая id-s для внешней
@@ -98,7 +99,15 @@ public abstract class BaseExternalDeleteEntity<Id> extends BaseDeleteEntity<Id> 
     }
 
     public void addExternalLink(List<ExternalLink> links) {
-        for (ExternalLink externalLink : links) addExternalLink(externalLink);
+        // Удаляем ExternalLinks без ID из текущего списка
+        this.externalLinks = this.externalLinks.stream()
+                .filter(link -> link.getId() != null)
+                .collect(Collectors.toList());
+
+        // Фильтруем и добавляем новые ссылки
+        links.stream()
+                .filter(link -> link.getId() != null)
+                .forEach(this::addExternalLink);
     }
 
     public Optional<ExternalLink> getExternalLinkByType(String externalType) {
