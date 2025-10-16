@@ -7,7 +7,7 @@
     <parent>
         <groupId>ru.foodtechlab</groupId>
         <artifactId>ftl-dependency-lib</artifactId>
-        <version>4.1.6</version>
+        <version>4.1.11</version>
     </parent>
 
     <groupId>io.foodtechlab</groupId>
@@ -82,12 +82,13 @@
         <module>i18n</module>
         <module>microservice-integration</module>
         <module>tests-helper</module>
+        <module>api-helper</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
-        <revision>4.1.7</revision>
+        <revision>4.2.0</revision>
 
         <!--Build and Deploy-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
