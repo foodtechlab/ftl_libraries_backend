@@ -1,8 +1,6 @@
 package io.foodtechlab.api;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Перечисление дополнительных HTTP заголовков используемых в приложении.
@@ -107,20 +105,10 @@ public class AppHttpHeaders {
     public static final String X_APPLICATION_PLATFORM = "X-Application-Platform";
 
     /**
-     * Перечисление всех кастомных хедеров
+     * Для идентификации гостя.
+     * <p>
+     * В основном его используем для контроля за тем кокой гость отправляет какой запрос.
      */
-    public static final List<String> ALL = Arrays.asList(
-            X_DATE,
-            X_SIGN,
-            X_DEVICE_TYPE,
-            X_APP_VERSION,
-            X_DEVICE_TOKEN,
-            X_VERSION,
-            X_OS_VERSION,
-            X_APP_VERSION,
-            X_CITY_ID,
-            X_UTM_SOURCE,
-            X_UTM_MEDIUM,
-            X_UTM_CAMPAIGN
-    );
+    public static final String X_CUSTOMER = "X-Customer";
+
 }
