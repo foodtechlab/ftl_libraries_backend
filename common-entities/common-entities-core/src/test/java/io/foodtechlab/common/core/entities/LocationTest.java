@@ -1,6 +1,5 @@
 package io.foodtechlab.common.core.entities;
 
-import io.foodtechlab.common.core.entities.Location;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

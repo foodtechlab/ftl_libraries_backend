@@ -6,13 +6,13 @@ import com.rcore.domain.commons.exception.DomainException;
 import com.rcore.domain.commons.exception.ForbiddenDomainException;
 import com.rcore.domain.commons.exception.UnauthorizedDomainException;
 import com.rcore.rest.api.commons.exception.HttpCommunicationException;
+import io.foodtechlab.exceptionhandler.api.ErrorFactory;
+import io.foodtechlab.exceptionhandler.core.Error;
 import io.foodtechlab.exceptionhandler.core.ErrorApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import io.foodtechlab.exceptionhandler.api.ErrorFactory;
-import io.foodtechlab.exceptionhandler.core.Error;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
