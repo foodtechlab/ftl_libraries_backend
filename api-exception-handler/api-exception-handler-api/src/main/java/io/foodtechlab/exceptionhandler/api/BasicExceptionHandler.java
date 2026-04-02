@@ -15,6 +15,7 @@ import io.foodtechlab.exceptionhandler.core.Error;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
@@ -102,9 +103,33 @@ public class BasicExceptionHandler {
 
     @ExceptionHandler(HttpCommunicationException.class)
     public ResponseEntity<ErrorApiResponse<Error>> handleUnknownException(HttpCommunicationException e, HttpServletRequest request, Locale locale) {
-        var response = (ErrorApiResponse<Error>) e.getResponse();
+        ErrorApiResponse<Error> originalResponse = (ErrorApiResponse<Error>) e.getResponse();
+
+        List<Error> enrichedErrors = originalResponse.getErrors().stream()
+                .map(error -> {
+                    if (error.getDomain() != null && error.getReason() != null) {
+                        DomainException.Error domainError =
+                                new DomainException.Error(
+                                        error.getDomain(),
+                                        error.getReason(),
+                                        error.getDetails()
+                                );
+                        return errorFactory.buildByError(domainError, locale);
+                    }
+                    return error;
+                })
+                .collect(Collectors.toList());
+
+        ErrorApiResponse<Error> newResponse = ErrorApiResponse.of(
+                enrichedErrors,
+                originalResponse.getStatus(),
+                originalResponse.getPath(),
+                originalResponse.getTraceId()
+        );
+        newResponse.setTimestamp(originalResponse.getTimestamp());
+
         e.printStackTrace();
-        return ResponseEntity.status(response.getStatus()).body(response);
+        return ResponseEntity.status(newResponse.getStatus()).body(newResponse);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
