@@ -3,10 +3,9 @@ package io.foodtechlab.exception.converter.core;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.foodtechlab.exception.converter.domain.CheckedDomainException;
 import io.foodtechlab.exception.converter.domain.UnknownCheckedDomainException;
+import io.foodtechlab.exception.converter.rcore.resource.CheckedExceptionResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
-import io.foodtechlab.exception.converter.rcore.resource.CheckedExceptionResponse;
-
 
 import java.util.Collection;
 import java.util.Collections;
