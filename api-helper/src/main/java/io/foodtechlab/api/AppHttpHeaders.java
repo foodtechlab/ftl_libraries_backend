@@ -78,6 +78,8 @@ public class AppHttpHeaders {
      */
     public static final String X_UTM_CAMPAIGN = "X-UTM-Campaign";
 
+    public static final String X_ADMITAD_UID = "X-Admitad-Uid";
+
     /**
      * Заголовок X-Requested-With используется в HTTP-запросах для указания типа запроса и его источника.
      * <p>
