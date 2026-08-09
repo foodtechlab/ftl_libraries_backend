@@ -57,6 +57,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.foodtechlab</groupId>
+            <artifactId>common-entities-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
